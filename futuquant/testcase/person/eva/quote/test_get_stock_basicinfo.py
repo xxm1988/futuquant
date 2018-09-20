@@ -18,7 +18,13 @@ class GetStockBasicinfo(object):
         # ret_code,ret_data = quote_ctx.get_stock_basicinfo(market = Market.US, stock_type=SecurityType.DRVT, code_list=['US.AAPL180928C172500'])
         # print(ret_code)
         # print(ret_data)
-        print(quote_ctx.get_stock_basicinfo(market=Market.HK, stock_type=SecurityType.IDX, code_list=[]))
+        ret_code, ret_data = quote_ctx.get_stock_basicinfo(market= Market.HK, stock_type= SecurityType.STOCK, code_list=None)
+        df = pandas.DataFrame()
+        df.iterrows()
+        for i in ret_data.iterrows():
+            print(i)
+
+
         # print(quote_ctx.get_stock_basicinfo(market=Market.US, stock_type=SecurityType.STOCK, code_list=None))
         # for data in ret_data.iterrows():
         #     print(data)
@@ -27,9 +33,18 @@ class GetStockBasicinfo(object):
         # print( 'HK.00001'in stock_codes)
         quote_ctx.close()
 
+    def test2(self):
+        quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11112)
+        idx_code_list = []
+        markets = [Market.HK, Market.US, Market.SH, Market.SZ]
+        for market in markets:
+            ret_code, ret_data = quote_ctx.get_stock_basicinfo(market, SecurityType.IDX)
+            idx_code_list.append(ret_data['code'])
+        print(type(idx_code_list))
+
 
 
 
 if __name__ == '__main__':
     gsb = GetStockBasicinfo()
-    gsb.test1()
+    gsb.test2()

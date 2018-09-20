@@ -11,14 +11,14 @@ class GetHistoryKline(object):
         pandas.set_option('max_columns', 1000)
 
     def test1(self):
-        quote_ctx = futuquant.OpenQuoteContext(host='127.0.0.1',port=11111)
-        code = 'HK.00700'
-        start = None
-        end = None
-        ktype = KLType.K_DAY
+        quote_ctx = futuquant.OpenQuoteContext(host='127.0.0.1',port=11112)
+        code = 'HK.999010'
+        start = '2018-5-1'
+        end = '2018-09-13'
+        ktype = KLType.K_MON
         autype = AuType.NONE
         fields = KL_FIELD.ALL_REAL
-        ret_code , ret_data = quote_ctx.get_history_kline(code, start, end, ktype, autype, fields)
+        ret_code , ret_data = quote_ctx.get_history_kline(code, start , end , ktype, autype, fields)
         print(ret_code)
         print(ret_data)
         quote_ctx.close()
