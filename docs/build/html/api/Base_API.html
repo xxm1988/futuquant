@@ -25,19 +25,23 @@
   
 
   
+  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="行情API" href="Quote_API.html" />
-    <link rel="prev" title="下载历史数据" href="../setup/Hist_KLine_Download_Intro.html" /> 
+  
+
+  
+
+  
+    <link rel="top" title="futuquant 3.4 documentation" href="../index.html"/>
+        <link rel="next" title="行情API" href="Quote_API.html"/>
+        <link rel="prev" title="下载历史数据" href="../setup/Hist_KLine_Download_Intro.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -115,9 +119,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#klnodatamode-k">KLNoDataMode - K线数据取值模式</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kl-field-k">KL_FIELD - K线数据字段</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tickerdirect">TickerDirect - 逐笔方向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tickertype">TickerType - 逐笔类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#darkstatus">DarkStatus - 暗盘状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plate">Plate - 板块集合分类</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stockholder">StockHolder - 持有者类别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optiontype">OptionType - 期权类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pushdatatype">PushDataType - 推送数据类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optioncondtype">OptionCondType - 价内价外</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sysnotifytype">SysNotifyType - 系统异步通知类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gtweventtype">GtwEventType - 网关异步通知类型</a></li>
@@ -157,7 +164,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futuquant</a>
@@ -165,10 +172,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -197,7 +203,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/Base_API.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/Base_API.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -254,8 +260,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>client_id</strong> – str, client的标识</li>
-<li><strong>client_ver</strong> – int, client的版本号</li>
+<li><strong>client_id</strong> &#8211; str, client的标识</li>
+<li><strong>client_ver</strong> &#8211; int, client的版本号</li>
 </ul>
 </td>
 </tr>
@@ -286,7 +292,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>proto_fmt</strong> – <a class="reference external" href="#id2">ProtoFMT</a></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>proto_fmt</strong> &#8211; <a class="reference external" href="#id2">ProtoFMT</a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -314,7 +320,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_encrypt</strong> – bool</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_encrypt</strong> &#8211; bool</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -343,7 +349,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> – str, 文件路径</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> &#8211; str, 文件路径</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -367,12 +373,12 @@
 <dl class="function">
 <dt id="set_all_thread_daemon">
 <code class="descname">set_all_thread_daemon</code><span class="sig-paren">(</span><em>cls</em>, <em>all_daemon</em><span class="sig-paren">)</span><a class="headerlink" href="#set_all_thread_daemon" title="Permalink to this definition">¶</a></dt>
-<dd><p>设置是否所有内部创建的线程都是daemon线程。在主线程退出后，如果其余线程都是daemon线程，则进程退出。否则进程仍会继续运行。如果不设置，默认内部会创建非daemon线程。</p>
+<dd><p>设置是否所有内部创建的线程都是daemon线程。在主线程退出后，如果其余线程都是daemon线程，则进程退出。否则进程仍会继续运行。如果不设置，默认内部会创建非daemon线程。默认情况下，行情和交易的context连接上FutuOpenD后，如果不调用close，即使主线程退出，进程也不会退出。因此，如果行情和交易的context设置了接收数据推送，并且也设置了daemon线程，则要自己保证主线程存活，否则进程将退出，也就不会再收到推送数据了。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_daemon</strong> – bool, 是否所有内部线程都是daemon线程</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_daemon</strong> &#8211; bool, 是否所有内部线程都是daemon线程</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -436,7 +442,7 @@
 <hr class="docutils" />
 <div class="section" id="market">
 <h3>Market - 行情市场<a class="headerlink" href="#market" title="Permalink to this headline">¶</a></h3>
-<p>标识不同的行情市场，股票名称的前缀复用该字符串,如 <strong>‘HK.00700’</strong>, <strong>‘HK_FUTURE.999010’</strong></p>
+<p>标识不同的行情市场，股票名称的前缀复用该字符串,如 <strong>&#8216;HK.00700&#8217;</strong>, <strong>&#8216;HK_FUTURE.999010&#8217;</strong></p>
 <dl class="class">
 <dt id="Market">
 <em class="property">class </em><code class="descname">Market</code><a class="headerlink" href="#Market" title="Permalink to this definition">¶</a></dt>
@@ -1042,6 +1048,224 @@
 
 </div>
 <hr class="docutils" />
+<div class="section" id="tickertype">
+<h3>TickerType - 逐笔类型<a class="headerlink" href="#tickertype" title="Permalink to this headline">¶</a></h3>
+<p>逐笔类型定义</p>
+<dl class="class">
+<dt id="TickerType">
+<em class="property">class </em><code class="descname">TickerType</code><a class="headerlink" href="#TickerType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="TickerType.AUTO_MATCH">
+<code class="descname">AUTO_MATCH</code><a class="headerlink" href="#TickerType.AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>自动对盘</p>
+<dl class="attribute">
+<dt id="TickerType.LATE">
+<code class="descname">LATE</code><a class="headerlink" href="#TickerType.LATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>开市前成交盘</p>
+<dl class="attribute">
+<dt id="TickerType.NON_AUTO_MATCH">
+<code class="descname">NON_AUTO_MATCH</code><a class="headerlink" href="#TickerType.NON_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>非自动对盘</p>
+<dl class="attribute">
+<dt id="TickerType.INTER_AUTO_MATCH">
+<code class="descname">INTER_AUTO_MATCH</code><a class="headerlink" href="#TickerType.INTER_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>同一证券商自动对盘</p>
+<dl class="attribute">
+<dt id="TickerType.INTER_NON_AUTO_MATCH">
+<code class="descname">INTER_NON_AUTO_MATCH</code><a class="headerlink" href="#TickerType.INTER_NON_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>同一证券商非自动对盘</p>
+<dl class="attribute">
+<dt id="TickerType.ODD_LOT">
+<code class="descname">ODD_LOT</code><a class="headerlink" href="#TickerType.ODD_LOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>碎股交易</p>
+<dl class="attribute">
+<dt id="TickerType.AUCTION">
+<code class="descname">AUCTION</code><a class="headerlink" href="#TickerType.AUCTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>竞价交易</p>
+<dl class="attribute">
+<dt id="TickerType.BULK">
+<code class="descname">BULK</code><a class="headerlink" href="#TickerType.BULK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>批量交易</p>
+<dl class="attribute">
+<dt id="TickerType.CRASH">
+<code class="descname">CRASH</code><a class="headerlink" href="#TickerType.CRASH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>现金交易</p>
+<dl class="attribute">
+<dt id="TickerType.CROSS_MARKET">
+<code class="descname">CROSS_MARKET</code><a class="headerlink" href="#TickerType.CROSS_MARKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>跨市场交易</p>
+<dl class="attribute">
+<dt id="TickerType.BULK_SOLD">
+<code class="descname">BULK_SOLD</code><a class="headerlink" href="#TickerType.BULK_SOLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>批量卖出</p>
+<dl class="attribute">
+<dt id="TickerType.FREE_ON_BOARD">
+<code class="descname">FREE_ON_BOARD</code><a class="headerlink" href="#TickerType.FREE_ON_BOARD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>离价交易</p>
+<dl class="attribute">
+<dt id="TickerType.RULE127_OR_155">
+<code class="descname">RULE127_OR_155</code><a class="headerlink" href="#TickerType.RULE127_OR_155" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>第127条交易（纽交所规则）或第155条交易</p>
+<dl class="attribute">
+<dt id="TickerType.DELAY">
+<code class="descname">DELAY</code><a class="headerlink" href="#TickerType.DELAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>延迟交易</p>
+<dl class="attribute">
+<dt id="TickerType.MARKET_CENTER_CLOSE_PRICE">
+<code class="descname">MARKET_CENTER_CLOSE_PRICE</code><a class="headerlink" href="#TickerType.MARKET_CENTER_CLOSE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>中央收市价</p>
+<dl class="attribute">
+<dt id="TickerType.NEXT_DAY">
+<code class="descname">NEXT_DAY</code><a class="headerlink" href="#TickerType.NEXT_DAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>隔日交易</p>
+<dl class="attribute">
+<dt id="TickerType.MARKET_CENTER_OPENING">
+<code class="descname">MARKET_CENTER_OPENING</code><a class="headerlink" href="#TickerType.MARKET_CENTER_OPENING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>中央开盘价交易</p>
+<dl class="attribute">
+<dt id="TickerType.PRIOR_REFERENCE_PRICE">
+<code class="descname">PRIOR_REFERENCE_PRICE</code><a class="headerlink" href="#TickerType.PRIOR_REFERENCE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>前参考价</p>
+<dl class="attribute">
+<dt id="TickerType.MARKET_CENTER_OPEN_PRICE">
+<code class="descname">MARKET_CENTER_OPEN_PRICE</code><a class="headerlink" href="#TickerType.MARKET_CENTER_OPEN_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>中央开盘价</p>
+<dl class="attribute">
+<dt id="TickerType.SELLER">
+<code class="descname">SELLER</code><a class="headerlink" href="#TickerType.SELLER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>卖方</p>
+<dl class="attribute">
+<dt id="TickerType.T">
+<code class="descname">T</code><a class="headerlink" href="#TickerType.T" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>T类交易(盘前和盘后交易)</p>
+<dl class="attribute">
+<dt id="TickerType.EXTENDED_TRADING_HOURS">
+<code class="descname">EXTENDED_TRADING_HOURS</code><a class="headerlink" href="#TickerType.EXTENDED_TRADING_HOURS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>延长交易时段</p>
+<dl class="attribute">
+<dt id="TickerType.CONTINGENT">
+<code class="descname">CONTINGENT</code><a class="headerlink" href="#TickerType.CONTINGENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>合单交易</p>
+<dl class="attribute">
+<dt id="TickerType.AVERAGE_PRICE">
+<code class="descname">AVERAGE_PRICE</code><a class="headerlink" href="#TickerType.AVERAGE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>平均价成交</p>
+<dl class="attribute">
+<dt id="TickerType.OTC_SOLD">
+<code class="descname">OTC_SOLD</code><a class="headerlink" href="#TickerType.OTC_SOLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>场外售出</p>
+<dl class="attribute">
+<dt id="TickerType.ODD_LOT_CROSS_MARKET">
+<code class="descname">ODD_LOT_CROSS_MARKET</code><a class="headerlink" href="#TickerType.ODD_LOT_CROSS_MARKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>碎股跨市场交易</p>
+<dl class="attribute">
+<dt id="TickerType.DERIVATIVELY_PRICED">
+<code class="descname">DERIVATIVELY_PRICED</code><a class="headerlink" href="#TickerType.DERIVATIVELY_PRICED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>衍生工具定价</p>
+<dl class="attribute">
+<dt id="TickerType.REOPENINGP_RICED">
+<code class="descname">REOPENINGP_RICED</code><a class="headerlink" href="#TickerType.REOPENINGP_RICED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>再开盘定价</p>
+<dl class="attribute">
+<dt id="TickerType.CLOSING_PRICED">
+<code class="descname">CLOSING_PRICED</code><a class="headerlink" href="#TickerType.CLOSING_PRICED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>收盘定价</p>
+<dl class="attribute">
+<dt id="TickerType.COMPREHENSIVE_DELAY_PRICE">
+<code class="descname">COMPREHENSIVE_DELAY_PRICE</code><a class="headerlink" href="#TickerType.COMPREHENSIVE_DELAY_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>综合延迟价格</p>
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="darkstatus">
+<h3>DarkStatus - 暗盘状态<a class="headerlink" href="#darkstatus" title="Permalink to this headline">¶</a></h3>
+<p>暗盘状态定义</p>
+<dl class="class">
+<dt id="DarkStatus">
+<em class="property">class </em><code class="descname">DarkStatus</code><a class="headerlink" href="#DarkStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="DarkStatus.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#DarkStatus.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>无暗盘交易</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DarkStatus.TRADING">
+<code class="descname">TRADING</code><a class="headerlink" href="#DarkStatus.TRADING" title="Permalink to this definition">¶</a></dt>
+<dd><p>暗盘交易中</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DarkStatus.END">
+<code class="descname">END</code><a class="headerlink" href="#DarkStatus.END" title="Permalink to this definition">¶</a></dt>
+<dd><p>暗盘交易结束</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
 <div class="section" id="plate">
 <h3>Plate - 板块集合分类<a class="headerlink" href="#plate" title="Permalink to this headline">¶</a></h3>
 <p>板块集合分类定义</p>
@@ -1126,6 +1350,34 @@
 <dt id="OptionType.PUT">
 <code class="descname">PUT</code><a class="headerlink" href="#OptionType.PUT" title="Permalink to this definition">¶</a></dt>
 <dd><p>跌</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="pushdatatype">
+<h3>PushDataType - 推送数据类型<a class="headerlink" href="#pushdatatype" title="Permalink to this headline">¶</a></h3>
+<p>推送数据类型定义</p>
+<dl class="class">
+<dt id="PushDataType">
+<em class="property">class </em><code class="descname">PushDataType</code><a class="headerlink" href="#PushDataType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="PushDataType.REALTIME">
+<code class="descname">REALTIME</code><a class="headerlink" href="#PushDataType.REALTIME" title="Permalink to this definition">¶</a></dt>
+<dd><p>实时推送数据</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PushDataType.BYDISCONN">
+<code class="descname">BYDISCONN</code><a class="headerlink" href="#PushDataType.BYDISCONN" title="Permalink to this definition">¶</a></dt>
+<dd><p>行情连接断开重连后，OpenD拉取补充断开期间的数据，最多750根</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PushDataType.CACHE">
+<code class="descname">CACHE</code><a class="headerlink" href="#PushDataType.CACHE" title="Permalink to this definition">¶</a></dt>
+<dd><p>非实时推送数据，非连接断开补充数据</p>
 </dd></dl>
 
 </dd></dl>
@@ -1638,7 +1890,9 @@
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -1678,11 +1932,10 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'3.4',
-            LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -1696,11 +1949,14 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
   </script>
+  
  
 <script type="text/javascript">
     console.log("Layout By FutuQuant");

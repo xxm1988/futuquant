@@ -33,7 +33,7 @@
 	pwd_unlock = '123456'
 	trd_ctx = OpenHKTradeContext(host='127.0.0.1', port=11111)
 	print(trd_ctx.unlock_trade(pwd_unlock))
-	print(trd_ctx.place_order(price=700.0, qty=100, code="HK.00700", trd_side=TrdSide.SELL))
+	print(trd_ctx.place_order(price=700.0, qty=100, code="HK.00700", trd_side=TrdSide.BUY))
 	trd_ctx.close()
 
 
@@ -42,7 +42,22 @@
 ==============
 
 OpenHKTradeContext、OpenUSTradeContext、OpenHKCCTradeContext(A股通)、OpenCNTradeContext - 交易接口类
-----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+close
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: close
+
+关闭上下文对象。默认情况下，futuquant内部创建的线程会阻止进程退出，只有当所有context都close后，进程才能正常退出。但通过SysConfig.set_all_thread_daemon可以设置所有内部线程为daemon线程，这时即使没有调用context的close，进程也可以正常退出。
+
+.. code:: python
+
+    from futuquant import *
+    quote_ctx = OpenHKTradeContext(host='127.0.0.1', port=11111)
+    quote_ctx.close()
+	
+
 
 get_acc_list - 获取交易业务账户列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -189,6 +204,8 @@ place_order - 下单
 ..  py:function:: place_order(self, price, qty, code, trd_side=TrdSide.NONE, order_type=OrderType.NORMAL, adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0)
 
  下单交易。
+ 
+ 注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。
 
  :param price: float，订单价格，3位精度(A股2位)，当订单是市价单或竞价单类型，忽略该参数传值
  :param qty: float，订单数量，2位精度，期权单位是"张"
@@ -438,18 +455,18 @@ history_deal_list_query - 获取历史成交列表
 ----------------------------
 
 acctradinginfo_query - 查询账户下最大可买卖数量
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: acctradinginfo_query(self, order_type, code, price, order_id, adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0)
 
  查询账户下最大可买卖数量
  
- :param order_type: 订单类型，参见OrderType
+ :param order_type: 订单类型，参见 _OrderType
  :param code: 证券代码，例如'HK.00700'
  :param price: 报价，3位精度
  :param order_id: 订单号
  :param adjust_limit: 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整
- :param trd_env: 交易环境，参见TrdEnv
+ :param trd_env: 交易环境，参见 _TrdEnv
  :param acc_id: 业务账号，默认0表示第1个
  :return (ret_code, ret_data):
         ret == RET_OK, data为pd.DataFrame，数据列如下
@@ -488,7 +505,9 @@ on_recv_rsp - 响应订单推送
 
 ..  py:function:: on_recv_rsp(self, rsp_pb)
 
- 响应订单推送。OpenD会主动推送订单的最新更新数据过来，需要客户端响应处理
+ 响应订单推送。OpenD会主动推送订单的最新更新数据过来，需要客户端响应处理。
+ 
+ 该类与place_order返回的顺序参见 place_order_ 的说明。
  
  :param rsp_pb: class，订单推送协议pb对象
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order-list-query_ (获取订单列表)相同
@@ -529,6 +548,8 @@ on_recv_rsp - 响应成交推送
 ..  py:function:: on_recv_rsp(self, rsp_pb)
 
  响应成交推送。OpenD会主动推送新的成交数据过来，需要客户端响应处理
+ 
+ 该类与place_order返回的顺序参见 place_order_ 的说明。
  
  :param rsp_pb: class，成交推送协议pb对象
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal-list-query_ (获取成交列表)相同

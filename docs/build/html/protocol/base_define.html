@@ -25,19 +25,23 @@
   
 
   
+  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="行情协议" href="quote_protocol.html" />
-    <link rel="prev" title="协议接口指南" href="intro.html" /> 
+  
+
+  
+
+  
+    <link rel="top" title="futuquant 3.4 documentation" href="../index.html"/>
+        <link rel="next" title="行情协议" href="quote_protocol.html"/>
+        <link rel="prev" title="协议接口指南" href="intro.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -122,6 +126,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#subtype">SubType - 行情定阅类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tickerdirection">TickerDirection - 逐笔方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tickertype">TickerType - 逐笔类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pushdatatype">PushDataType - 推送数据来源分类，目前只有逐笔在使用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#darkstatus">DarkStatus - 暗盘交易状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holdercategory">HolderCategory - 持有者类别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#security">Security - 证券标识</a></li>
@@ -179,7 +184,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futuquant</a>
@@ -187,10 +192,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -219,7 +223,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/protocol/base_define.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/protocol/base_define.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -302,7 +306,7 @@
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>请求其它协议前必须等InitConnect协议先完成</li>
-<li>若FutuOpenD配置了加密， “connAESKey”将用于后续协议加密</li>
+<li>若FutuOpenD配置了加密， &#8220;connAESKey&#8221;将用于后续协议加密</li>
 <li>keepAliveInterval 为建议client发起心跳 <a class="reference external" href="#keepalive-proto-1004">KeepAlive</a> 的间隔</li>
 </ul>
 </div>
@@ -744,6 +748,22 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
+<div class="section" id="pushdatatype">
+<h3>PushDataType - 推送数据来源分类，目前只有逐笔在使用<a class="headerlink" href="#pushdatatype" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//推送数据来源分类，目前只有逐笔在使用</span>
+<span class="kd">enum</span> <span class="n">PushDataType</span>
+<span class="p">{</span>
+        <span class="na">PushDataType_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="na">PushDataType_Realtime</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//实时推送的数据</span>
+        <span class="na">PushDataType_ByDisConn</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//对后台行情连接断开期间拉取补充的数据 最多750个</span>
+        <span class="na">PushDataType_Cache</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//非实时非连接断开补充数据</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
 <div class="section" id="darkstatus">
 <h3>DarkStatus - 暗盘交易状态<a class="headerlink" href="#darkstatus" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -960,6 +980,7 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">recvTime</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//收到推送数据的本地时间戳，用于定位延迟</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//TickerType, 逐笔类型</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">typeSign</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//逐笔类型符号</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">pushDataType</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//用于区分推送情况，仅推送时有该字段</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1347,7 +1368,9 @@
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -1387,11 +1410,10 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'3.4',
-            LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -1405,11 +1427,14 @@
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
   </script>
+  
  
 <script type="text/javascript">
     console.log("Layout By FutuQuant");
