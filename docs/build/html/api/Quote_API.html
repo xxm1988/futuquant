@@ -2699,18 +2699,17 @@ start和end的组合如下：</p>
 <div class="section" id="sysnotifyhandlerbase-opend">
 <h3>SysNotifyHandlerBase - OpenD通知回调处理类<a class="headerlink" href="#sysnotifyhandlerbase-opend" title="Permalink to this headline">¶</a></h3>
 <p>通知OpenD一些重要消息，类似连接断开等。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">futuquant</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futuquant</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">class</span> <span class="nc">SysNotifyTest</span><span class="p">(</span><span class="n">SysNotifyHandlerBase</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">on_recv_rsp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rsp_pb</span><span class="p">):</span>
-    <span class="n">ret_code</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">SysNotifyTest</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">on_recv_rsp</span><span class="p">(</span><span class="n">rsp_pb</span><span class="p">)</span>
-    <span class="n">notify_type</span><span class="p">,</span> <span class="n">sub_type</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">content</span>
-    <span class="k">if</span> <span class="n">ret_code</span> <span class="o">!=</span> <span class="n">RET_OK</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;SysNotifyTest: error, msg: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">RET_ERROR</span><span class="p">,</span> <span class="n">content</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ret_code</span><span class="p">,</span> <span class="n">content</span>
+    <span class="k">def</span> <span class="nf">on_recv_rsp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rsp_str</span><span class="p">):</span>
+        <span class="n">ret_code</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">SysNotifyTest</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">on_recv_rsp</span><span class="p">(</span><span class="n">rsp_pb</span><span class="p">)</span>
+        <span class="n">notify_type</span><span class="p">,</span> <span class="n">sub_type</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="n">ret_code</span> <span class="o">!=</span> <span class="n">RET_OK</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;SysNotifyTest: error, msg: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">RET_ERROR</span><span class="p">,</span> <span class="n">data</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">RET_OK</span><span class="p">,</span> <span class="n">data</span>
 
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">handler</span> <span class="o">=</span> <span class="n">SysNotifyTest</span><span class="p">()</span>
