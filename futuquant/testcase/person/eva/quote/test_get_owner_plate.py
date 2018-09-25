@@ -15,7 +15,7 @@ class GetOwnerPlate(object):
         host='127.0.0.1'
         port=11111
         quote_ctx = OpenQuoteContext(host,port)
-        print(quote_ctx.get_owner_plate('HK.800000'))
+        print(quote_ctx.get_owner_plate('HK.28100'))
 
 
 if __name__ == '__main__':

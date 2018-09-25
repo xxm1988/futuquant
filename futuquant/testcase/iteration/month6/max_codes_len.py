@@ -50,9 +50,13 @@ class MaxCodesLen(object):
 
 
 if __name__ == '__main__':
-    mcl = MaxCodesLen()
-    code_list = mcl.get_market_all()
-    mcl.test_subscribe(code_list)
+    l1 = [1,2,3,4,5]
+    l2 = [4,5,1,1,2,3,3,4,2,5]
+    s1 = set(l1 )
+    s2 = set(l2)
+    print(s1)
+    print(s2)
+
 
 
 
