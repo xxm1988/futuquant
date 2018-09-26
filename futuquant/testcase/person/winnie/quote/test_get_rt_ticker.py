@@ -2,20 +2,21 @@ from futuquant import *
 import pandas
 import sys
 import datetime
+import logging
 
-
+f = open('get_rt_triker1.txt','a')
 class TickerTest(TickerHandlerBase):
         def on_recv_rsp(self, rsp_str):
                 ret_code, data = super(TickerTest, self).on_recv_rsp(rsp_str)
                 if ret_code != RET_OK:
                         print("TickerTest: error, msg: %s" % data)
                         return RET_ERROR, data
-                # with open('get_rt_triker1.txt', 'at') as f:
-                output = sys.stdout
-                outputfile = open('get_rt_triker1.txt', 'a')
-                sys.stdout = outputfile
-                print(data)
-                sys.stdout = output
+                # logging.basicConfig(filename='get_rt_triker1.txt',
+                #                     format='%(asctime)s - %(name)s - %(levelname)s -%(module)s:  %(message)s',
+                #                     datefmt='%Y-%m-%d %H:%M:%S %p',
+                #                     level=10)
+                # logging.info(data)
+                print(data,file=f,flush=True)
                 return RET_OK, data
 
 
@@ -26,11 +27,12 @@ class SysNotifyTest(SysNotifyHandlerBase):
         if ret_code != RET_OK:
             logger.debug("SysNotifyTest: error, msg: %s" % msg)
             return RET_ERROR, content
-        with open('get_rt_triker2.txt', 'a') as f:
-            now = datetime.datetime.now()
-            now.strftime('%c')
-            print(now, file=f)
-            print(msg, file=f)
+        # logging.basicConfig(filename='get_rt_triker1.txt',
+        #                     format='%(asctime)s - %(name)s - %(levelname)s -%(module)s:  %(message)s',
+        #                     datefmt='%Y-%m-%d %H:%M:%S %p',
+        #                     level=10)
+        # logging.info(msg)
+        print(msg,file=f,flush=True)
 
         return ret_code, content
 

@@ -1,1 +1,0 @@
-(-1, 'ERROR. the type of code param is wrong')

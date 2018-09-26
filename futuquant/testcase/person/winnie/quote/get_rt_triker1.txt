@@ -1,0 +1,188 @@
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:43  331.2    3000  993600.0             SELL  6605363704986866282  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:04:43  331.4     100   33140.0              BUY  6605363704986866283  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:45  331.2    2000  662400.0             SELL  6605363713576800876  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:04:45  331.4     100   33140.0              BUY  6605363713576800877  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:46  331.2     400  132480.0             SELL  6605363717871768174  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:46  331.2     200   66240.0              BUY  6605363717871768175  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:48  331.0   10900  3607900.0             SELL  6605363726461702768  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:48  331.2     300   99360.0              BUY  6605363726461702769  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:04:48  331.0     100   33100.0             SELL  6605363726461702770  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:51  331.0   10100  3343100.0             SELL  6605363739346604659  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:04:51  331.2     300    99360.0              BUY  6605363739346604660  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:04:55  331.0    1200  397200.0             SELL  6605363756526473845  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:04:55  331.2     100   33120.0              BUY  6605363756526473846  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence                  type push_data_type
+0  HK.00700  2018-09-26 11:04:55  331.0     100   33100.0              BUY  6605363756526473847            AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:04:55  331.0     800  264800.0          NEUTRAL  6605363756526473848  INTER_NON_AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:04:55  331.0    1400  463400.0          NEUTRAL  6605363756526473849  INTER_NON_AUTO_MATCH       REALTIME
+3  HK.00700  2018-09-26 11:04:55  331.0    1800  595800.0          NEUTRAL  6605363756526473850  INTER_NON_AUTO_MATCH       REALTIME
+4  HK.00700  2018-09-26 11:04:55  331.0    1000  331000.0          NEUTRAL  6605363756526473851  INTER_NON_AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:00  331.2     400  132480.0              BUY  6605363778001310332  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:00  331.0    4800  1588800.0             SELL  6605363778001310333  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:05:00  331.2     100    33120.0              BUY  6605363778001310334  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:04  331.0     100   33100.0             SELL  6605363795181179519  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:07  331.2     100   33120.0              BUY  6605363808066081408  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence                  type push_data_type
+0  HK.00700  2018-09-26 11:05:10  331.0     100   33100.0          NEUTRAL  6605363820950983297  INTER_NON_AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence                  type push_data_type
+0  HK.00700  2018-09-26 11:05:11  331.0     400  132400.0          NEUTRAL  6605363825245950594  INTER_NON_AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:12  331.2     100   33120.0              BUY  6605363829540917891  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:14  331.0    5200  1721200.0             SELL  6605363838130852484  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:05:14  331.2     200    66240.0              BUY  6605363838130852485  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:17  331.0    5200  1721200.0             SELL  6605363851015754374  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:17  331.2     100   33120.0              BUY  6605363851015754375  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:20  331.0    8900  2945900.0             SELL  6605363863900656264  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:20  331.2     300   99360.0              BUY  6605363863900656265  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:22  331.2     200   66240.0              BUY  6605363872490590858  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:23  331.0    5200  1721200.0             SELL  6605363876785558155  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:05:23  331.2     200    66240.0              BUY  6605363876785558156  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:24  331.2     600  198720.0              BUY  6605363881080525453  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:24  331.2     100   33120.0              BUY  6605363881080525454  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:25  331.2     200   66240.0              BUY  6605363885375492751  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:25  331.0     500  165500.0             SELL  6605363885375492752  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:27  331.0    3800  1257800.0             SELL  6605363893965427345  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:05:27  331.2     100    33120.0              BUY  6605363893965427346  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:29  331.2     100   33120.0              BUY  6605363902555361939  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence              type push_data_type
+0  HK.00700  2018-09-26 11:05:34  331.0     700  231700.0          NEUTRAL  6605363924030198420  INTER_AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:05:34  331.0     400  132400.0             SELL  6605363924030198421        AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:05:34  331.0     100   33100.0             SELL  6605363924030198422        AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:37  331.0     100   33100.0              BUY  6605363936915100311  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:49  331.0     100   33100.0              BUY  6605363988454707864  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:54  330.8    3000  992400.0             SELL  6605364009929544345  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:05:54  331.0     100   33100.0              BUY  6605364009929544346  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:58  331.0     100   33100.0              BUY  6605364027109413531  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:58  331.0     300   99300.0              BUY  6605364027109413532  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:05:59  331.0    1000  331000.0              BUY  6605364031404380829  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:06  331.0    2000  662000.0              BUY  6605364061469151902  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:06  331.0     100   33100.0              BUY  6605364061469151903  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:08  331.0     100   33100.0              BUY  6605364070059086496  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:12  331.0    3500  1158500.0              BUY  6605364087238955681  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:12  331.0     100    33100.0              BUY  6605364087238955682  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:13  331.0     100   33100.0              BUY  6605364091533922979  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:14  330.8    5000  1654000.0             SELL  6605364095828890276  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:14  331.0     100    33100.0              BUY  6605364095828890277  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:14  330.8    5000  1654000.0             SELL  6605364095828890278  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:14  331.0     200    66200.0              BUY  6605364095828890279  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:19  330.8     400  132320.0             SELL  6605364117303726760  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence              type push_data_type
+0  HK.00700  2018-09-26 11:06:20  330.8    9900  3274920.0             SELL  6605364121598694057        AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:20  330.6   10100  3339060.0          NEUTRAL  6605364121598694058  INTER_AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:20  330.8     600   198480.0             SELL  6605364121598694059        AUTO_MATCH       REALTIME
+        code                 time  price  volume   turnover ticker_direction             sequence              type push_data_type
+0   HK.00700  2018-09-26 11:06:20  330.8     100    33080.0              BUY  6605364121598694060        AUTO_MATCH       REALTIME
+1   HK.00700  2018-09-26 11:06:20  330.8    1200   396960.0          NEUTRAL  6605364121598694061  INTER_AUTO_MATCH       REALTIME
+2   HK.00700  2018-09-26 11:06:20  330.8    1000   330800.0              BUY  6605364121598694062        AUTO_MATCH       REALTIME
+3   HK.00700  2018-09-26 11:06:20  330.8     100    33080.0              BUY  6605364121598694063        AUTO_MATCH       REALTIME
+4   HK.00700  2018-09-26 11:06:20  330.8     100    33080.0              BUY  6605364121598694064        AUTO_MATCH       REALTIME
+5   HK.00700  2018-09-26 11:06:20  331.0     100    33100.0              BUY  6605364121598694065        AUTO_MATCH       REALTIME
+6   HK.00700  2018-09-26 11:06:20  330.8    7600  2514080.0              BUY  6605364121598694066        AUTO_MATCH       REALTIME
+7   HK.00700  2018-09-26 11:06:20  330.6   12400  4099440.0          NEUTRAL  6605364121598694067  INTER_AUTO_MATCH       REALTIME
+8   HK.00700  2018-09-26 11:06:20  330.8     600   198480.0              BUY  6605364121598694068        AUTO_MATCH       REALTIME
+9   HK.00700  2018-09-26 11:06:20  331.0     100    33100.0          NEUTRAL  6605364121598694069  INTER_AUTO_MATCH       REALTIME
+10  HK.00700  2018-09-26 11:06:20  331.0    6200  2052200.0              BUY  6605364121598694070        AUTO_MATCH       REALTIME
+11  HK.00700  2018-09-26 11:06:20  331.0     200    66200.0              BUY  6605364121598694071        AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:20  330.8     100   33080.0             SELL  6605364121598694072  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:23  331.0     100   33100.0              BUY  6605364134483595961  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:23  331.0     100   33100.0              BUY  6605364134483595962  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence              type push_data_type
+0  HK.00700  2018-09-26 11:06:24  330.8   14300  4730440.0             SELL  6605364138778563259        AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:24  330.6   15700  5190420.0          NEUTRAL  6605364138778563260  INTER_AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:24  330.8     900   297720.0             SELL  6605364138778563261        AUTO_MATCH       REALTIME
+3  HK.00700  2018-09-26 11:06:24  330.8     200    66160.0             SELL  6605364138778563262        AUTO_MATCH       REALTIME
+4  HK.00700  2018-09-26 11:06:24  330.6   11800  3901080.0          NEUTRAL  6605364138778563263  INTER_AUTO_MATCH       REALTIME
+5  HK.00700  2018-09-26 11:06:24  330.6    9400  3107640.0             SELL  6605364138778563264        AUTO_MATCH       REALTIME
+6  HK.00700  2018-09-26 11:06:24  330.4     200    66080.0          NEUTRAL  6605364138778563265  INTER_AUTO_MATCH       REALTIME
+7  HK.00700  2018-09-26 11:06:24  330.4    8600  2841440.0             SELL  6605364138778563266        AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:24  330.6    1500  495900.0              BUY  6605364138778563267  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:24  330.6     700  231420.0              BUY  6605364138778563268  AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:24  330.8     200   66160.0              BUY  6605364138778563269  AUTO_MATCH       REALTIME
+3  HK.00700  2018-09-26 11:06:24  330.8     100   33080.0              BUY  6605364138778563270  AUTO_MATCH       REALTIME
+4  HK.00700  2018-09-26 11:06:24  330.8     800  264640.0              BUY  6605364138778563271  AUTO_MATCH       REALTIME
+5  HK.00700  2018-09-26 11:06:24  330.8     100   33080.0              BUY  6605364138778563272  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:26  330.8     100   33080.0              BUY  6605364147368497865  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:27  330.4     600  198240.0             SELL  6605364151663465162  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:29  330.8     200   66160.0              BUY  6605364160253399755  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:29  330.6     100   33060.0          NEUTRAL  6605364160253399756  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence              type push_data_type
+0  HK.00700  2018-09-26 11:06:29  330.4    8700  2874480.0             SELL  6605364160253399757        AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:29  330.2     100    33020.0          NEUTRAL  6605364160253399758  INTER_AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:29  330.2   16200  5349240.0             SELL  6605364160253399759        AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence              type push_data_type
+0  HK.00700  2018-09-26 11:06:29  330.6     700   231420.0              BUY  6605364160253399760        AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:29  330.4    1300   429520.0          NEUTRAL  6605364160253399761        AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:29  330.2    2600   858520.0             SELL  6605364160253399762        AUTO_MATCH       REALTIME
+3  HK.00700  2018-09-26 11:06:29  330.0     700   231000.0          NEUTRAL  6605364160253399763  INTER_AUTO_MATCH       REALTIME
+4  HK.00700  2018-09-26 11:06:29  330.0   20400  6732000.0             SELL  6605364160253399764        AUTO_MATCH       REALTIME
+5  HK.00700  2018-09-26 11:06:29  330.4     700   231280.0          NEUTRAL  6605364160253399765        AUTO_MATCH       REALTIME
+6  HK.00700  2018-09-26 11:06:29  330.4     100    33040.0          NEUTRAL  6605364160253399766        AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:32  330.6     400  132240.0              BUY  6605364173138301655  AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence              type push_data_type
+0  HK.00700  2018-09-26 11:06:32  330.6     100    33060.0             SELL  6605364173138301656        AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:32  330.4    5500  1817200.0             SELL  6605364173138301657        AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:32  330.2    4800  1584960.0             SELL  6605364173138301658        AUTO_MATCH       REALTIME
+3  HK.00700  2018-09-26 11:06:32  330.0    4600  1518000.0          NEUTRAL  6605364173138301659  INTER_AUTO_MATCH       REALTIME
+4  HK.00700  2018-09-26 11:06:32  330.0    5000  1650000.0             SELL  6605364173138301660        AUTO_MATCH       REALTIME
+       code                 time  price  volume   turnover ticker_direction             sequence              type push_data_type
+0  HK.00700  2018-09-26 11:06:33  330.0    9100  3003000.0          NEUTRAL  6605364177433268957  INTER_AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:33  330.0   15100  4983000.0             SELL  6605364177433268958        AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:33  330.0     800   264000.0             SELL  6605364177433268959        AUTO_MATCH       REALTIME
+3  HK.00700  2018-09-26 11:06:33  330.2    1300   429260.0          NEUTRAL  6605364177433268960        AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:38  330.4     100   33040.0              BUY  6605364198908105441  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:39  330.2    3000  990600.0             SELL  6605364203203072738  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:39  330.2     100   33020.0              BUY  6605364203203072739  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:40  330.0    1900  627000.0             SELL  6605364207498040036  AUTO_MATCH       REALTIME
+1  HK.00700  2018-09-26 11:06:40  330.0     100   33000.0             SELL  6605364207498040037  AUTO_MATCH       REALTIME
+2  HK.00700  2018-09-26 11:06:40  330.0     100   33000.0             SELL  6605364207498040038  AUTO_MATCH       REALTIME
+       code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+0  HK.00700  2018-09-26 11:06:40  330.0     500  165000.0              BUY  6605364207498040039  AUTO_MATCH       REALTIME
