@@ -17,13 +17,14 @@ class TradeUS(object):
         pandas.set_option('display.width', 1000)
 
     def test_plateOrder_noPush(self):
-
-        quote_ctx = OpenQuoteContext('127.0.0.1',11111)
-        trade_us = OpenUSTradeContext('127.0.0.1',11111)
+        quote_host = '127.0.0.1'
+        quote_port = 11111
+        quote_ctx = OpenQuoteContext(quote_host ,quote_port)
+        trade_us = OpenUSTradeContext('127.0.0.1',11113)
         #日志
-        logger = self.getNewLogger('plate_order_time_out_900019')
+        logger = self.getNewLogger('plate_order_time_out_100068')
         #解锁交易
-        logger.info('unlock '+str(trade_us.unlock_trade('321321')))
+        logger.info('unlock '+str(trade_us.unlock_trade('123123')))
         #订阅订单状态推送
         handler_order = TradeOrderTest()
         handler_order.set_logger(logger)
@@ -62,7 +63,7 @@ class TradeUS(object):
             price_tmp = price - (price_spread * price_spread_num) #下买入单，低于当前价20个档位
             if price_tmp >0:
                 price = price_tmp
-            ''' 
+            '''  '''
             logger.info('place_order 买入 code= ' +code+' price= '+str(price))
             ret_code_buy ,ret_data_buy = trade_us.place_order(price=price, qty=1, code=code, trd_side=TrdSide.BUY, order_type=OrderType.NORMAL,adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0, acc_index=acc_index)
             logger.info('place_order 【买入】 ' + str((ret_code_buy ,ret_data_buy)) )
@@ -73,7 +74,7 @@ class TradeUS(object):
             time.sleep(10)
             ret_code_position, ret_data_position = trade_us.position_list_query(code='', pl_ratio_min=None,pl_ratio_max=None, trd_env=TrdEnv.REAL,acc_id=0,acc_index=acc_index)
             logger.info('position_list_query ret_code = '+str(ret_code_position)+' len(ret_data) = '+str(len(ret_data_position)))
-            '''
+
             price = price + (price_spread * price_spread_num)#下卖出单，高于当前价20个档位
             logger.info('place_order 卖出 code= ' + code + ' price= ' + str(price))
             ret_code_sell, ret_data_sell = trade_us.place_order(price=price, qty=1, code=code, trd_side=TrdSide.SELL, order_type=OrderType.NORMAL,adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0, acc_index=acc_index)
@@ -89,6 +90,9 @@ class TradeUS(object):
             time.sleep(2*60)
             ret_code_unsub, ret_data_unsub = quote_ctx.unsubscribe(code, SubType.QUOTE)
             logger.info('unsubscribe '+str((ret_code_unsub, ret_data_unsub)))
+            # 重新获取一次行情上下文，防止因重登录断开
+            quote_ctx.close()
+            quote_ctx = OpenQuoteContext(quote_host, quote_port)
             #重头开始下单
             if index == len(codes)-1:
                 index = 0
