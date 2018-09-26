@@ -1,14 +1,14 @@
 #-*-coding:utf-8-*-
 
-import futuquant
-from evatest.utils.logUtil import Logs
-from evatest.datas.collect_stock import *
+from futuquant import *
+from futuquant.testcase.person.eva.utils.logUtil import Logs
+from futuquant.testcase.person.eva.datas.collect_stock import *
 
 class GetCurKline(object):
     #获取实时K线 get_cur_kline 和 CurKlineHandlerBase
 
     def test1(self):
-        quote_ctx = futuquant.OpenQuoteContext(host='127.0.0.1',port=11111)
+        quote_ctx = OpenQuoteContext(host='127.0.0.1',port=11111)
         quote_ctx.start()
         # 设置异步数据监听
         handler = CurKlineTest()
@@ -23,12 +23,12 @@ class GetCurKline(object):
                 # 订阅股票
                 quote_ctx.subscribe(code, kType)
                 #调用待测接口
-                ret_code,ret_data = quote_ctx.get_cur_kline(code,1000,kType,AuType.QFQ)
-                print(ret_code)
-                print(ret_data)
+                # ret_code,ret_data = quote_ctx.get_cur_kline(code,1000,kType,AuType.QFQ)
+                # print(ret_code)
+                # print(ret_data)
 
     def test2(self):
-        quote_ctx = futuquant.OpenQuoteContext(host='127.0.0.1',port=11111)
+        quote_ctx = OpenQuoteContext(host='127.0.0.1',port=11111)
         quote_ctx.start()
         # 设置异步数据监听
         handler = CurKlineTest()
