@@ -7,7 +7,7 @@ class GetAutypeList():
 
     def test1(self):
         quote_ctx = futuquant.OpenQuoteContext(host='127.0.0.1',port=11111)
-        code_list =  ['HK.00700']
+        code_list =  ['HK.08413']
         ret_code, ret_data = quote_ctx.get_autype_list(code_list)
         quote_ctx.close()
 
@@ -19,3 +19,5 @@ class GetAutypeList():
 if __name__ == '__main__':
     gal = GetAutypeList()
     gal.test1()
+
+

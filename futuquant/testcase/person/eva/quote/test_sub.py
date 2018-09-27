@@ -27,14 +27,14 @@ class Sub(object):
         quote_ctx.close()
 
     def test2(self):
-        quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11114)
+        quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
         code = 'HK.00700'
         ktype = SubType.BROKER
         print(quote_ctx.subscribe(code, ktype))
-        # print(quote_ctx.query_subscription())
-        # time.sleep(60)
+        print(quote_ctx.query_subscription())
+        time.sleep(60)
         print(quote_ctx.unsubscribe(code, ktype))
-        # print(quote_ctx.query_subscription())
+        print(quote_ctx.query_subscription())
         quote_ctx.close()
 
     def test3(self):
@@ -44,7 +44,7 @@ class Sub(object):
         print(quote_ctx.subscribe(code, ktype))
 
     def test4(self):
-        quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11113)
+        quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
         print(quote_ctx.query_subscription())
         ret_code, ret_data = quote_ctx.get_stock_basicinfo(market=Market.HK, stock_type=SecurityType.STOCK,code_list=None)
         codes = ret_data['code'].tolist()
@@ -75,14 +75,9 @@ class Sub(object):
         codes = codes1 + codes2 + codes3 + codes4 + codes5 + codes6
         print(quote_ctx.unsubscribe(code_list=codes, subtype_list=subTypes))
 
-    def test6(self):
-        quote_ctx_285706 = OpenQuoteContext('127.0.0.1',11112)
-        quote_ctx_5914062 = OpenQuoteContext('127.0.0.1',11115)
-        for i in range(1000000):
-            print(datetime.now(),' quote_ctx_285706 ',quote_ctx_285706.get_global_state())
-            print(datetime.now(),' quote_ctx_5914062 ', quote_ctx_285706.get_global_state())
-            time.sleep(60)
+
 
 if __name__ == '__main__':
-    sub = Sub()
-    sub.test6()
+    df = {'total_used': 1, 'remain': 299, 'own_used': 1, 'sub_list': {'BROKER': ['HK.00700']}}
+    tmp = df['sub_list'].get('TICKER',None)
+    print(tmp)
