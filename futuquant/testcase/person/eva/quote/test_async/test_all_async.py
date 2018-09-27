@@ -3,7 +3,7 @@
 import futuquant
 from futuquant.quote.quote_response_handler import *
 from futuquant.common.constant import *
-from evatest.utils.logUtil import Logs
+from futuquant.testcase.person.eva.utils.logUtil import Logs
 
 class TestAll(object):
     dir = 'one_CentOs7'
@@ -15,7 +15,7 @@ class TestAll(object):
 
 
         # port=11111挂机CentOs7  1010503
-        self.quote_ctx=futuquant.OpenQuoteContext(host='172.18.10.58',port=11111)
+        self.quote_ctx=futuquant.OpenQuoteContext(host='127.0.0.1',port=11111)
         self.quote_ctx.start()
 
     def test_GetBrokerQueue(self):

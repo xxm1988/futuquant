@@ -28,7 +28,7 @@ class BeforePublishTest(object):
         pandas.set_option('max_columns',100)
         pandas.set_option('display.width',1000)
         self.host = '127.0.0.1'
-        self.port = 11112
+        self.port = 11111
 
 
     def test_quotation(self):
@@ -152,7 +152,7 @@ class BeforePublishTest(object):
             trade_cn = OpenCNTradeContext(self.host, self.port)   #web模拟交易
         logger.info('交易环境：'+tradeEnv)
         #解锁交易unlock
-        trade_pwd = '123123'
+        trade_pwd = '321321'
         logger.info('HK解锁交易')
         logger.info(trade_hk.unlock_trade(trade_pwd))
         logger.info('US解锁交易')
@@ -174,10 +174,10 @@ class BeforePublishTest(object):
         trade_cn.start()
 
         #股票信息
-        price_hk = 4.01
+        price_hk = 5.9
         qty_hk = 500
         code_hk = 'HK.01357'
-        price_us = 32.14
+        price_us = 24.1
         qty_us = 2
         code_us = 'US.JD'
         price_cn = 10.15
@@ -454,8 +454,9 @@ class TradeDealTest(TradeDealHandlerBase):
 
 if __name__ == '__main__':
     aa = BeforePublishTest()
-    aa.test_quotation()
+    # aa.test_quotation()
     aa.test_trade(TrdEnv.REAL)
+    time.sleep(30)
     aa.test_trade(TrdEnv.SIMULATE)
 
 
