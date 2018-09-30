@@ -67,10 +67,10 @@ class TradeUS(object):
             logger.info('place_order 买入 code= ' +code+' price= '+str(price))
             ret_code_buy ,ret_data_buy = trade_us.place_order(price=price, qty=1, code=code, trd_side=TrdSide.BUY, order_type=OrderType.NORMAL,adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0, acc_index=acc_index)
             logger.info('place_order 【买入】 ' + str((ret_code_buy ,ret_data_buy)) )
-            if ret_code_buy == RET_ERROR:
-                dt = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S%f')
-                print('%s 买入 code= %s price = %f' %(dt, code, price))
-                print('place_order ',(ret_code_buy ,ret_data_buy))
+            # if ret_code_buy == RET_ERROR:
+            #     dt = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S%f')
+            #     print('%s 买入 code= %s price = %f' %(dt, code, price))
+            #     print('place_order ',(ret_code_buy ,ret_data_buy))
             time.sleep(10)
             ret_code_position, ret_data_position = trade_us.position_list_query(code='', pl_ratio_min=None,pl_ratio_max=None, trd_env=TrdEnv.REAL,acc_id=0,acc_index=acc_index)
             logger.info('position_list_query ret_code = '+str(ret_code_position)+' len(ret_data) = '+str(len(ret_data_position)))
@@ -79,10 +79,10 @@ class TradeUS(object):
             logger.info('place_order 卖出 code= ' + code + ' price= ' + str(price))
             ret_code_sell, ret_data_sell = trade_us.place_order(price=price, qty=1, code=code, trd_side=TrdSide.SELL, order_type=OrderType.NORMAL,adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0, acc_index=acc_index)
             logger.info('place_order 【卖出】 ' + str((ret_code_sell, ret_data_sell)) )
-            if ret_code_sell == RET_ERROR:
-                dt = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S%f')
-                print('%s 卖出 code= %s price = %f' % (dt, code, price))
-                print('place_order ', (ret_code_sell, ret_data_sell))
+            # if ret_code_sell == RET_ERROR:
+            #     dt = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S%f')
+            #     print('%s 卖出 code= %s price = %f' % (dt, code, price))
+            #     print('place_order ', (ret_code_sell, ret_data_sell))
             time.sleep(10)
             # logger.info(trade_us.position_list_query(code='', pl_ratio_min=None, pl_ratio_max=None, trd_env=TrdEnv.REAL,acc_id=0,acc_index=acc_index))
             ret_code_position, ret_data_position = trade_us.position_list_query(code='', pl_ratio_min=None,pl_ratio_max=None, trd_env=TrdEnv.REAL,acc_id=0,acc_index=acc_index)
@@ -139,7 +139,7 @@ class TradeUS(object):
         console = logging.StreamHandler(stream=sys.stdout)
 
         logger.addHandler(handler)  # 设置日志输出到文件
-        # logger.addHandler(console)  # 设置日志输出到屏幕控制台
+        logger.addHandler(console)  # 设置日志输出到屏幕控制台
         logger.setLevel(logging.DEBUG)  # 设置打印的日志等级
 
         return logger
