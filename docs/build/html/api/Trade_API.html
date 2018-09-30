@@ -426,6 +426,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futuquant</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">accinfo_query</span><span class="p">())</span>
 <span class="n">trd_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -1229,6 +1230,7 @@
 <p>2.不支持生效失效、删除订单操作，仅支持支持改单， 撤单</p>
 <p>3.不支持成交数据，包括今日成交，历史成交，成交推送</p>
 <p>4.下单仅支持Normal类型</p>
+<p>5.模拟交易不需要解锁交易</p>
 <p>可视数据可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate/">模拟交易</a>，该页面仅支持手机浏览器访问。</p>
 </div>
 <hr class="docutils" />
