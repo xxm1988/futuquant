@@ -96,7 +96,7 @@ class PlaceOrder(object):
 
     def test1(self):
         host = '127.0.0.1'
-        port = 11111
+        port = 11113
 
         trade_hk = OpenHKTradeContext(host, port)
         trade_us = OpenUSTradeContext(host, port)
@@ -159,5 +159,5 @@ class PlaceOrder(object):
 
 if __name__ == '__main__':
     po = PlaceOrder()
-    po.test_hk()
-    # po.test1()
+    # po.test_hk()
+    po.test1()
