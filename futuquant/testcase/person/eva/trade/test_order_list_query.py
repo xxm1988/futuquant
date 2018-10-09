@@ -16,7 +16,7 @@ class OrderListQuery(object):
         ret_code_unlock_trade, ret_data_unlock_trade = trade_.unlock_trade(password='321321')
         print('unlock_trade  ret_code= %d, ret_data= %s' % (ret_code_unlock_trade, ret_data_unlock_trade))
         # ret_code,ret_data = trade_.order_list_query(order_id="", status_filter_list=[], code='', start='2018-10-08 00:00:00', end='2018-10-08 23:59:59',trd_env=TrdEnv.REAL,acc_id=0,acc_index=0)
-        ret_code, ret_data = trade_.order_list_query(order_id="", status_filter_list=[], code='',start='', end='',trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+        ret_code, ret_data = trade_.order_list_query(order_id="", status_filter_list='全部成交', code='',start='', end='',trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
 
         print(ret_code)
         print(ret_data)

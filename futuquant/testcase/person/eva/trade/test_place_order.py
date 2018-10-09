@@ -49,7 +49,7 @@ class PlaceOrder(object):
 
 
     def test_hk(self):
-        host =  '172.18.7.65'
+        host =  '127.0.0.1'
         port = 11111
         trade = OpenHKTradeContext(host, port)
 
@@ -66,7 +66,7 @@ class PlaceOrder(object):
         # ret_code, ret_data = trade_hk.place_order(price = 2.64, qty= 2000, code= 'HK.01758', trd_side= TrdSide.BUY, order_type= OrderType.ABSOLUTE_LIMIT, adjust_limit=0, trd_env= TrdEnv.REAL,acc_id=0)
         # print('真实环境',ret_code)
         # print('真实环境',ret_data)
-        print(trade.place_order(price = 3.97, qty=500, code='HK.01357', trd_side=TrdSide.BUY, order_type=OrderType.NORMAL,
+        print(trade.place_order(price = 5.05, qty=500, code='HK.01357', trd_side=TrdSide.BUY, order_type=OrderType.NORMAL,
                     adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0))
 
     def test_us(self):
@@ -96,7 +96,7 @@ class PlaceOrder(object):
 
     def test1(self):
         host = '127.0.0.1'
-        port = 11113
+        port = 11111
 
         trade_hk = OpenHKTradeContext(host, port)
         trade_us = OpenUSTradeContext(host, port)
@@ -159,5 +159,5 @@ class PlaceOrder(object):
 
 if __name__ == '__main__':
     po = PlaceOrder()
-    # po.test_hk()
-    po.test1()
+    po.test_hk()
+    # po.test1()
