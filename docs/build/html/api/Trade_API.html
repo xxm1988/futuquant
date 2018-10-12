@@ -439,7 +439,7 @@
 <h4>position_list_query - 获取账户持仓列表<a class="headerlink" href="#position-list-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="position_list_query">
-<code class="descname">position_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>pl_ratio_min=None</em>, <em>pl_ratio_max=None</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#position_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">position_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>pl_ratio_min=None</em>, <em>pl_ratio_max=None</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#position_list_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取账户持仓列表。获取账户的证券持仓列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -572,7 +572,7 @@
 <h4>place_order - 下单<a class="headerlink" href="#place-order" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="place_order">
-<code class="descname">place_order</code><span class="sig-paren">(</span><em>self</em>, <em>price</em>, <em>qty</em>, <em>code</em>, <em>trd_side=TrdSide.NONE</em>, <em>order_type=OrderType.NORMAL</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#place_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">place_order</code><span class="sig-paren">(</span><em>self</em>, <em>price</em>, <em>qty</em>, <em>code</em>, <em>trd_side=TrdSide.NONE</em>, <em>order_type=OrderType.NORMAL</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#place_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>下单交易。</p>
 <p>注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -732,7 +732,7 @@
 <h4>modify_order - 修改订单<a class="headerlink" href="#modify-order" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="modify_order">
-<code class="descname">modify_order</code><span class="sig-paren">(</span><em>self</em>, <em>modify_order_op</em>, <em>order_id</em>, <em>qty</em>, <em>price</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#modify_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">modify_order</code><span class="sig-paren">(</span><em>self</em>, <em>modify_order_op</em>, <em>order_id</em>, <em>qty</em>, <em>price</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#modify_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>修改订单。修改订单，包括修改订单的价格和数量(即以前的改单)、撤单、失效、生效、删除等。</p>
 <p>如果是OpenHKCCTradeContext，将不支持改单。可撤单。删除订单是本地操作。</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -847,7 +847,7 @@
 <h4>deal_list_query - 获取成交列表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="deal_list_query">
-<code class="descname">deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=&quot;&quot;</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#deal_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=&quot;&quot;</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#deal_list_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取成交列表。获取账户的交易成交列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -947,7 +947,7 @@
 <h4>history_order_list_query - 获取历史订单列表<a class="headerlink" href="#history-order-list-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="history_order_list_query">
-<code class="descname">history_order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_order_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">history_order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_order_list_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取历史订单列表。获取账户的历史交易订单列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -989,7 +989,7 @@
 <h4>history_deal_list_query - 获取历史成交列表<a class="headerlink" href="#history-deal-list-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="history_deal_list_query">
-<code class="descname">history_deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_deal_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">history_deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_deal_list_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取历史成交列表。获取账户的历史交易成交列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1030,7 +1030,7 @@
 <h4>acctradinginfo_query - 查询账户下最大可买卖数量<a class="headerlink" href="#acctradinginfo-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="acctradinginfo_query">
-<code class="descname">acctradinginfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_type</em>, <em>code</em>, <em>price</em>, <em>order_id</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#acctradinginfo_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">acctradinginfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_type</em>, <em>code</em>, <em>price</em>, <em>order_id</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#acctradinginfo_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>查询账户下最大可买卖数量</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
