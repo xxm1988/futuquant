@@ -108,7 +108,7 @@ set_handler
             ===============================    =========================
              类名                                 说明
             ===============================    =========================
-			SysNotifyHandlerBase				OpenD通知处理基类
+            SysNotifyHandlerBase				OpenD通知处理基类
             StockQuoteHandlerBase               报价处理基类
             OrderBookHandlerBase                摆盘处理基类
             CurKlineHandlerBase                 实时k线处理基类
@@ -180,7 +180,7 @@ get_stock_basicinfo
         suspension          bool           是否停牌(True表示停牌)
         listing_date        str            上市时间
         stock_id            int            股票id
-		delisting           bool           是否退市
+        delisting           bool           是否退市
         =================   ===========   ==============================================================================
 
  :Example:
@@ -1441,7 +1441,7 @@ TickerHandlerBase - 实时逐笔推送回调处理类
 	
 .. note::
 
-    * 行情连接断开重连后，OpenD拉取断开期间的逐笔数据（最多750根）并推送，可通过push_data_type字段区分
+    * 行情连接断开重连后，OpenD拉取断开期间的逐笔数据（最多50根）并推送，可通过push_data_type字段区分
 -------------------------------------------
 
 on_recv_rsp
