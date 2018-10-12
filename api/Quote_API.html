@@ -322,7 +322,42 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>handler</strong> – 回调处理对象，必须是以下类的子类实例</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>handler</strong> – <p>回调处理对象，必须是以下类的子类实例</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">类名</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SysNotifyHandlerBase</td>
+<td>OpenD通知处理基类</td>
+</tr>
+<tr class="row-odd"><td>StockQuoteHandlerBase</td>
+<td>报价处理基类</td>
+</tr>
+<tr class="row-even"><td>OrderBookHandlerBase</td>
+<td>摆盘处理基类</td>
+</tr>
+<tr class="row-odd"><td>CurKlineHandlerBase</td>
+<td>实时k线处理基类</td>
+</tr>
+<tr class="row-even"><td>TickerHandlerBase</td>
+<td>逐笔处理基类</td>
+</tr>
+<tr class="row-odd"><td>RTDataHandlerBase</td>
+<td>分时数据处理基类</td>
+</tr>
+<tr class="row-even"><td>BrokerHandlerBase</td>
+<td>经济队列处理基类</td>
+</tr>
+</tbody>
+</table>
+</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return ret:</th><td class="field-body"><p class="first">RET_OK: 设置成功</p>
@@ -421,6 +456,73 @@ start和end的组合如下：</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>(ret_code, content)</p>
 <p>ret_code 等于RET_OK时， content为Pandas.DataFrame数据, 否则为错误原因字符串, 数据列格式如下</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="10%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>code</td>
+<td>str</td>
+<td>股票代码</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str</td>
+<td>名字</td>
+</tr>
+<tr class="row-even"><td>lot_size</td>
+<td>int</td>
+<td>每手数量</td>
+</tr>
+<tr class="row-odd"><td>stock_type</td>
+<td>str</td>
+<td>股票类型，参见 <a class="reference external" href="Base_API.html#securitytype">SecurityType</a></td>
+</tr>
+<tr class="row-even"><td>stock_child_type</td>
+<td>str</td>
+<td>窝轮子类型，参见 <a class="reference external" href="Base_API.html#wrttype">WrtType</a></td>
+</tr>
+<tr class="row-odd"><td>stock_owner</td>
+<td>str</td>
+<td>所属正股的代码</td>
+</tr>
+<tr class="row-even"><td>option_type</td>
+<td>str</td>
+<td>期权类型，查看 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></td>
+</tr>
+<tr class="row-odd"><td>strike_time</td>
+<td>str</td>
+<td>行权日（美股默认是美东时间，港股A股默认是北京时间）</td>
+</tr>
+<tr class="row-even"><td>strike_price</td>
+<td>float</td>
+<td>行权价</td>
+</tr>
+<tr class="row-odd"><td>suspension</td>
+<td>bool</td>
+<td>是否停牌(True表示停牌)</td>
+</tr>
+<tr class="row-even"><td>listing_date</td>
+<td>str</td>
+<td>上市时间</td>
+</tr>
+<tr class="row-odd"><td>stock_id</td>
+<td>int</td>
+<td>股票id</td>
+</tr>
+<tr class="row-even"><td>delisting</td>
+<td>bool</td>
+<td>是否退市</td>
+</tr>
+</tbody>
+</table>
 </p>
 </td>
 </tr>
