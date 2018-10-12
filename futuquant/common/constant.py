@@ -280,10 +280,13 @@ class SubType(object):
       分时
      ..  py:attribute:: BROKER
       买卖经纪
+     ..  py:attribute:: ORDER_DETAIL
+      委托明细
     """
     TICKER = "TICKER"
     QUOTE = "QUOTE"
     ORDER_BOOK = "ORDER_BOOK"
+    ORDER_DETAIL = "ORDER_DETAIL"
     K_1M = "K_1M"
     K_5M = "K_5M"
     K_15M = "K_15M"
@@ -315,7 +318,8 @@ SUBTYPE_MAP = {
     SubType.K_1M: 11,
     SubType.K_WEEK: 12,
     SubType.K_MON: 13,
-    SubType.BROKER: 14
+    SubType.BROKER: 14,
+    SubType.ORDER_DETAIL: 18
 }
 
 
@@ -713,16 +717,18 @@ class ProtoId(object):
     Qot_RequestHistoryKL = 3103 # 拉取历史K线
 
     # 其他行情数据
-    Qot_GetTradeDate = 3200  # 获取市场交易日
-    Qot_GetSuspend = 3201  # 获取股票停牌信息
-    Qot_GetStaticInfo = 3202  # 获取股票列表
+    Qot_GetTradeDate = 3200         # 获取市场交易日
+    Qot_GetSuspend = 3201           # 获取股票停牌信息
+    Qot_GetStaticInfo = 3202        # 获取股票列表
     Qot_GetSecuritySnapshot = 3203  # 获取股票快照
-    Qot_GetPlateSet = 3204  # 获取板块集合下的板块
-    Qot_GetPlateSecurity = 3205  # 获取板块下的股票
-    Qot_GetReference = 3206  # 获取正股相关股票，暂时只有窝轮
-    Qot_GetOwnerPlate = 3207  # 获取股票所属板块
-    Qot_GetHoldingChangeList = 3208  # 获取高管持股变动
-    Qot_GetOptionChain = 3209  # 获取期权链
+    Qot_GetPlateSet = 3204          # 获取板块集合下的板块
+    Qot_GetPlateSecurity = 3205     # 获取板块下的股票
+    Qot_GetReference = 3206         # 获取正股相关股票，暂时只有窝轮
+    Qot_GetOwnerPlate = 3207        # 获取股票所属板块
+    Qot_GetHoldingChangeList = 3208     # 获取高管持股变动
+    Qot_GetOptionChain = 3209           # 获取期权链
+    Qot_GetOrderDetail = 3016           # 获取委托明细
+    Qot_UpdateOrderDetail = 3017        # 推送委托明细
 
     All_PushId = [Notify, KeepAlive, Trd_UpdateOrder, Trd_UpdateOrderFill, Qot_UpdateBroker,
                   Qot_UpdateOrderBook, Qot_UpdateKL, Qot_UpdateRT, Qot_UpdateBasicQot, Qot_UpdateTicker]
