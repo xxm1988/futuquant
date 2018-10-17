@@ -462,13 +462,14 @@ acctradinginfo_query - 查询账户下最大可买卖数量
 
  查询账户下最大可买卖数量
  
- :param order_type: 订单类型，参见 _OrderType
+ :param order_type: 订单类型，参见 OrderType_
  :param code: 证券代码，例如'HK.00700'
  :param price: 报价，3位精度
  :param order_id: 订单号
  :param adjust_limit: 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整
- :param trd_env: 交易环境，参见 _TrdEnv
+ :param trd_env: 交易环境，参见 TrdEnv_
  :param acc_id: 业务账号，默认0表示第1个
+ :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
  :return (ret_code, ret_data):
         ret == RET_OK, data为pd.DataFrame，数据列如下
 
