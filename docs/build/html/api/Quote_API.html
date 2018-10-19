@@ -25,23 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="futuquant 3.4 documentation" href="../index.html"/>
-        <link rel="next" title="交易API" href="Trade_API.html"/>
-        <link rel="prev" title="基础API" href="Base_API.html"/> 
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="交易API" href="Trade_API.html" />
+    <link rel="prev" title="基础API" href="Base_API.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -128,6 +124,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-referencestock-list">get_referencestock_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-owner-plate">get_owner_plate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-holding-change-list">get_holding_change_list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-order-detail">get_order_detail</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-option-chain">get_option_chain</a></li>
 </ul>
 </li>
@@ -159,13 +156,17 @@
 <li class="toctree-l4"><a class="reference internal" href="#id8">on_recv_rsp</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#orderdetailhandlerbase-a">OrderDetailHandlerBase - A股委托明细推送回调处理类</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">接口入参限制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">接口限频</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">低频数据接口</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">高频数据接口</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">OpenAPI用户等级权限</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">接口入参限制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">接口限频</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">低频数据接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">高频数据接口</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">OpenAPI用户等级权限</a></li>
 </ul>
 </li>
 </ul>
@@ -193,7 +194,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futuquant</a>
@@ -201,9 +202,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -232,7 +234,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/Quote_API.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/Quote_API.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -325,7 +327,42 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>handler</strong> &#8211; 回调处理对象，必须是以下类的子类实例</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>handler</strong> – <p>回调处理对象，必须是以下类的子类实例</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">类名</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SysNotifyHandlerBase</td>
+<td>OpenD通知处理基类</td>
+</tr>
+<tr class="row-odd"><td>StockQuoteHandlerBase</td>
+<td>报价处理基类</td>
+</tr>
+<tr class="row-even"><td>OrderBookHandlerBase</td>
+<td>摆盘处理基类</td>
+</tr>
+<tr class="row-odd"><td>CurKlineHandlerBase</td>
+<td>实时k线处理基类</td>
+</tr>
+<tr class="row-even"><td>TickerHandlerBase</td>
+<td>逐笔处理基类</td>
+</tr>
+<tr class="row-odd"><td>RTDataHandlerBase</td>
+<td>分时数据处理基类</td>
+</tr>
+<tr class="row-even"><td>BrokerHandlerBase</td>
+<td>经济队列处理基类</td>
+</tr>
+</tbody>
+</table>
+</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return ret:</th><td class="field-body"><p class="first">RET_OK: 设置成功</p>
@@ -348,9 +385,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>market</strong> &#8211; 市场类型，<a class="reference external" href="Base_API.html#market">Market</a></li>
-<li><strong>start</strong> &#8211; 起始日期。例如&#8216;2018-01-01&#8217;。</li>
-<li><strong>end</strong> &#8211; <p>结束日期。例如&#8216;2018-01-01&#8217;。
+<li><strong>market</strong> – 市场类型，<a class="reference external" href="Base_API.html#market">Market</a></li>
+<li><strong>start</strong> – 起始日期。例如‘2018-01-01’。</li>
+<li><strong>end</strong> – <p>结束日期。例如‘2018-01-01’。
 start和end的组合如下：</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -416,14 +453,81 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>market</strong> &#8211; 市场类型 <a class="reference external" href="Base_API.html#market">Market</a></li>
-<li><strong>stock_type</strong> &#8211; 股票类型，参见 <a class="reference external" href="Base_API.html#securitytype">SecurityType</a>，但不支持SecurityType.DRVT</li>
-<li><strong>code_list</strong> &#8211; 如果不为None，应该是股票code的iterable类型，将只返回指定的股票信息</li>
+<li><strong>market</strong> – 市场类型 <a class="reference external" href="Base_API.html#market">Market</a></li>
+<li><strong>stock_type</strong> – 股票类型，参见 <a class="reference external" href="Base_API.html#securitytype">SecurityType</a>，但不支持SecurityType.DRVT</li>
+<li><strong>code_list</strong> – 如果不为None，应该是股票code的iterable类型，将只返回指定的股票信息</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>(ret_code, content)</p>
 <p>ret_code 等于RET_OK时， content为Pandas.DataFrame数据, 否则为错误原因字符串, 数据列格式如下</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="10%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>code</td>
+<td>str</td>
+<td>股票代码</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str</td>
+<td>名字</td>
+</tr>
+<tr class="row-even"><td>lot_size</td>
+<td>int</td>
+<td>每手数量</td>
+</tr>
+<tr class="row-odd"><td>stock_type</td>
+<td>str</td>
+<td>股票类型，参见 <a class="reference external" href="Base_API.html#securitytype">SecurityType</a></td>
+</tr>
+<tr class="row-even"><td>stock_child_type</td>
+<td>str</td>
+<td>窝轮子类型，参见 <a class="reference external" href="Base_API.html#wrttype">WrtType</a></td>
+</tr>
+<tr class="row-odd"><td>stock_owner</td>
+<td>str</td>
+<td>所属正股的代码</td>
+</tr>
+<tr class="row-even"><td>option_type</td>
+<td>str</td>
+<td>期权类型，查看 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></td>
+</tr>
+<tr class="row-odd"><td>strike_time</td>
+<td>str</td>
+<td>行权日（美股默认是美东时间，港股A股默认是北京时间）</td>
+</tr>
+<tr class="row-even"><td>strike_price</td>
+<td>float</td>
+<td>行权价</td>
+</tr>
+<tr class="row-odd"><td>suspension</td>
+<td>bool</td>
+<td>是否停牌(True表示停牌)</td>
+</tr>
+<tr class="row-even"><td>listing_date</td>
+<td>str</td>
+<td>上市时间</td>
+</tr>
+<tr class="row-odd"><td>stock_id</td>
+<td>int</td>
+<td>股票id</td>
+</tr>
+<tr class="row-even"><td>delisting</td>
+<td>bool</td>
+<td>是否退市</td>
+</tr>
+</tbody>
+</table>
 </p>
 </td>
 </tr>
@@ -434,7 +538,7 @@ start和end的组合如下：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futuquant</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_basicinfo</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="n">SecurityType</span><span class="o">.</span><span class="n">WARRANT</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_basicinfo</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">US</span><span class="p">,</span> <span class="n">SecurityType</span><span class="o">.</span><span class="n">DRVT</span><span class="p">,</span> <span class="s1">&#39;US.AAPL190621C140000&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_basicinfo</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">US</span><span class="p">,</span> <span class="n">SecurityType</span><span class="o">.</span><span class="n">STOCK</span><span class="p">,</span> <span class="s1">&#39;US.AAPL&#39;</span><span class="p">))</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -452,11 +556,11 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>codelist</strong> &#8211; 股票代码列表，list或str。例如：[&#8216;HK.00700&#8217;, &#8216;HK.00001&#8217;]，&#8217;HK.00700,SZ.399001&#8217;</li>
-<li><strong>start</strong> &#8211; 起始时间，，例如&#8216;2017-06-20&#8217;</li>
-<li><strong>end</strong> &#8211; 结束时间，例如&#8216;2017-07-20&#8217;，start与end组合关系参见 <a class="reference internal" href="#get_history_kline">get_history_kline</a></li>
-<li><strong>ktype</strong> &#8211; k线类型，参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a></li>
-<li><strong>autype</strong> &#8211; 复权类型，参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a></li>
+<li><strong>codelist</strong> – 股票代码列表，list或str。例如：[‘HK.00700’, ‘HK.00001’]，’HK.00700,SZ.399001’</li>
+<li><strong>start</strong> – 起始时间，，例如‘2017-06-20’</li>
+<li><strong>end</strong> – 结束时间，例如‘2017-07-20’，start与end组合关系参见 <a class="reference internal" href="#get_history_kline">get_history_kline</a></li>
+<li><strong>ktype</strong> – k线类型，参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a></li>
+<li><strong>autype</strong> – 复权类型，参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a></li>
 </ul>
 </td>
 </tr>
@@ -554,9 +658,9 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码</li>
-<li><strong>start</strong> &#8211; 开始时间，例如&#8216;2017-06-20&#8217;。</li>
-<li><strong>end</strong> &#8211; <p>结束时间，例如&#8216;2017-06-30&#8217;。
+<li><strong>code</strong> – 股票代码</li>
+<li><strong>start</strong> – 开始时间，例如‘2017-06-20’。</li>
+<li><strong>end</strong> – <p>结束时间，例如‘2017-06-30’。
 start和end的组合如下：</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -592,9 +696,9 @@ start和end的组合如下：</p>
 </table>
 </div></blockquote>
 </li>
-<li><strong>ktype</strong> &#8211; k线类型， 参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a> 定义</li>
-<li><strong>autype</strong> &#8211; 复权类型, 参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a> 定义</li>
-<li><strong>fields</strong> &#8211; 需返回的字段列表，参见 <a class="reference external" href="Base_API.html#kl-field-k">KL_FIELD</a> 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....</li>
+<li><strong>ktype</strong> – k线类型， 参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a> 定义</li>
+<li><strong>autype</strong> – 复权类型, 参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a> 定义</li>
+<li><strong>fields</strong> – 需返回的字段列表，参见 <a class="reference external" href="Base_API.html#kl-field-k">KL_FIELD</a> 定义 KL_FIELD.ALL  KL_FIELD.OPEN ….</li>
 </ul>
 </td>
 </tr>
@@ -693,9 +797,9 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码</li>
-<li><strong>start</strong> &#8211; 开始时间，例如&#8216;2017-06-20&#8217;</li>
-<li><strong>end</strong> &#8211; <p>结束时间，例如&#8216;2017-07-20&#8217;。
+<li><strong>code</strong> – 股票代码</li>
+<li><strong>start</strong> – 开始时间，例如‘2017-06-20’</li>
+<li><strong>end</strong> – <p>结束时间，例如‘2017-07-20’。
 start和end的组合如下：</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -729,11 +833,11 @@ start和end的组合如下：</p>
 </tbody>
 </table>
 </li>
-<li><strong>ktype</strong> &#8211; k线类型， 参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a> 定义</li>
-<li><strong>autype</strong> &#8211; 复权类型, 参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a> 定义</li>
-<li><strong>fields</strong> &#8211; 需返回的字段列表，参见 <a class="reference external" href="Base_API.html#kl-field-k">KL_FIELD</a> 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....</li>
-<li><strong>max_count</strong> &#8211; 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。</li>
-<li><strong>page_req_key</strong> &#8211; 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。</li>
+<li><strong>ktype</strong> – k线类型， 参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a> 定义</li>
+<li><strong>autype</strong> – 复权类型, 参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a> 定义</li>
+<li><strong>fields</strong> – 需返回的字段列表，参见 <a class="reference external" href="Base_API.html#kl-field-k">KL_FIELD</a> 定义 KL_FIELD.ALL  KL_FIELD.OPEN ….</li>
+<li><strong>max_count</strong> – 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。</li>
+<li><strong>page_req_key</strong> – 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。</li>
 </ul>
 </td>
 </tr>
@@ -833,7 +937,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code_list</strong> &#8211; 股票列表，例如[&#8216;HK.00700&#8217;]</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code_list</strong> – 股票列表，例如[‘HK.00700’]</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
@@ -943,7 +1047,7 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">param code_list:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">股票列表，股票个数限制参考 <a class="reference external" href="Quote_API.html#id15">OpenAPI用户等级权限</a></p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">股票列表，股票个数限制参考 <a class="reference external" href="Quote_API.html#id12">OpenAPI用户等级权限</a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">return:</th><td class="field-body"><p class="first">(ret, data)</p>
@@ -1218,11 +1322,11 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>code</strong> &#8211; 股票代码，例如，HK.00700，US.AAPL</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>code</strong> – 股票代码，例如，HK.00700，US.AAPL</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return (ret, data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret == RET_OK 返回pd Dataframe数据, 数据列格式如下</p>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">ret == RET_OK 返回pd Dataframe数据, 数据列格式如下</p>
 <p class="last">ret != RET_OK 返回错误字符串</p>
 </td>
 </tr>
@@ -1309,11 +1413,11 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>plate_code</strong> &#8211; 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>plate_code</strong> – 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return (ret, data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下</p>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1482,13 +1586,13 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>market</strong> &#8211; 市场标识，注意这里不区分沪，深,输入沪或者深都会返回沪深市场的子板块（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></li>
-<li><strong>plate_class</strong> &#8211; 板块分类，参见 <a class="reference external" href="Base_API.html#plate">Plate</a></li>
+<li><strong>market</strong> – 市场标识，注意这里不区分沪，深,输入沪或者深都会返回沪深市场的子板块（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></li>
+<li><strong>plate_class</strong> – 板块分类，参见 <a class="reference external" href="Base_API.html#plate">Plate</a></li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return (ret, data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret == RET_OK 返回pd Dataframe数据，数据列格式如下</p>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first">ret == RET_OK 返回pd Dataframe数据，数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1542,7 +1646,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> &#8211; 股票代码</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> – 股票代码</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, bid_frame_table, ask_frame_table)或(ret, err_message)<p>ret == RET_OK 返回pd dataframe数据，数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
@@ -1638,9 +1742,9 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code_list</strong> &#8211; 需要订阅的股票代码列表</li>
-<li><strong>subtype_list</strong> &#8211; 需要订阅的数据类型列表，参见 <a class="reference external" href="Base_API.html#subtype">SubType</a></li>
-<li><strong>is_first_push</strong> &#8211; 订阅成功之后是否马上推送一次数据</li>
+<li><strong>code_list</strong> – 需要订阅的股票代码列表</li>
+<li><strong>subtype_list</strong> – 需要订阅的数据类型列表，参见 <a class="reference external" href="Base_API.html#subtype">SubType</a></li>
+<li><strong>is_first_push</strong> – 订阅成功之后是否马上推送一次数据</li>
 </ul>
 </td>
 </tr>
@@ -1674,8 +1778,8 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code_list</strong> &#8211; 取消订阅的股票代码列表</li>
-<li><strong>subtype_list</strong> &#8211; 取消订阅的类型，参见 <a class="reference external" href="Base_API.html#subtype">SubType</a></li>
+<li><strong>code_list</strong> – 取消订阅的股票代码列表</li>
+<li><strong>subtype_list</strong> – 取消订阅的类型，参见 <a class="reference external" href="Base_API.html#subtype">SubType</a></li>
 </ul>
 </td>
 </tr>
@@ -1708,7 +1812,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_all_conn</strong> &#8211; 是否返回所有连接的订阅状态,不传或者传False只返回当前连接数据</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_all_conn</strong> – 是否返回所有连接的订阅状态,不传或者传False只返回当前连接数据</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
 <p>ret == RET_OK 返回 定阅信息的字典数据 ，格式如下:</p>
@@ -1796,11 +1900,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>trd_logined</td>
 <td>str</td>
-<td>&#8216;1&#8217;：已登录交易服务器，&#8216;0&#8217;: 未登录交易服务器</td>
+<td>‘1’：已登录交易服务器，‘0’: 未登录交易服务器</td>
 </tr>
 <tr class="row-odd"><td>qot_logined</td>
 <td>str</td>
-<td>&#8216;1&#8217;：已登录行情服务器，&#8216;0&#8217;: 未登录行情服务器</td>
+<td>‘1’：已登录行情服务器，‘0’: 未登录行情服务器</td>
 </tr>
 <tr class="row-even"><td>timestamp</td>
 <td>str</td>
@@ -1837,7 +1941,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code_list</strong> &#8211; 股票代码列表，必须确保code_list中的股票均订阅成功后才能够执行</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code_list</strong> – 股票代码列表，必须确保code_list中的股票均订阅成功后才能够执行</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret == RET_OK 返回pd dataframe数据，数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
@@ -1988,8 +2092,8 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码</li>
-<li><strong>num</strong> &#8211; 最近ticker个数，最多可获取1000个</li>
+<li><strong>code</strong> – 股票代码</li>
+<li><strong>num</strong> – 最近ticker个数，最多可获取1000个</li>
 </ul>
 </td>
 </tr>
@@ -2071,10 +2175,10 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码</li>
-<li><strong>num</strong> &#8211; k线数据个数，最多1000根</li>
-<li><strong>ktype</strong> &#8211; k线类型，参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a></li>
-<li><strong>autype</strong> &#8211; 复权类型，参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a></li>
+<li><strong>code</strong> – 股票代码</li>
+<li><strong>num</strong> – k线数据个数，最多1000根</li>
+<li><strong>ktype</strong> – k线类型，参见 <a class="reference external" href="Base_API.html#kltype-k">KLType</a></li>
+<li><strong>autype</strong> – 复权类型，参见 <a class="reference external" href="Base_API.html#autype-k">AuType</a></li>
 </ul>
 </td>
 </tr>
@@ -2173,7 +2277,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> &#8211; 股票代码</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> – 股票代码</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret == RET_OK 返回字典，数据格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
@@ -2219,18 +2323,18 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code_list</strong> &#8211; 单个或多个股票 &#8216;HK.00700&#8217;  or  [&#8216;HK.00700&#8217;, &#8216;HK.00001&#8217;]</li>
-<li><strong>dates</strong> &#8211; 单个或多个日期 &#8216;2017-01-01&#8217; or [&#8216;2017-01-01&#8217;, &#8216;2017-01-02&#8217;]，最多5个时间点</li>
-<li><strong>fields</strong> &#8211; 单个或多个数据列 KL_FIELD.ALL or [KL_FIELD.DATE_TIME, KL_FIELD.OPEN]</li>
-<li><strong>ktype</strong> &#8211; K线类型 <a class="reference external" href="Base_API.html#kltype-k">KLType</a></li>
-<li><strong>autype</strong> &#8211; 复权类型 <a class="reference external" href="Base_API.html#autype-k">AuType</a></li>
-<li><strong>no_data_mode</strong> &#8211; 指定时间为非交易日时，对应的k线数据取值模式，参见 <a class="reference external" href="Base_API.html#klnodatamode-k">KLNoDataMode</a></li>
+<li><strong>code_list</strong> – 单个或多个股票 ‘HK.00700’  or  [‘HK.00700’, ‘HK.00001’]</li>
+<li><strong>dates</strong> – 单个或多个日期 ‘2017-01-01’ or [‘2017-01-01’, ‘2017-01-02’]，最多5个时间点</li>
+<li><strong>fields</strong> – 单个或多个数据列 KL_FIELD.ALL or [KL_FIELD.DATE_TIME, KL_FIELD.OPEN]</li>
+<li><strong>ktype</strong> – K线类型 <a class="reference external" href="Base_API.html#kltype-k">KLType</a></li>
+<li><strong>autype</strong> – 复权类型 <a class="reference external" href="Base_API.html#autype-k">AuType</a></li>
+<li><strong>no_data_mode</strong> – 指定时间为非交易日时，对应的k线数据取值模式，参见 <a class="reference external" href="Base_API.html#klnodatamode-k">KLNoDataMode</a></li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>(ret, data)</p>
 <blockquote>
-<div><p>ret == RET_OK 返回pd dataframe数据，固定表头包括&#8217;code&#8217;(代码) &#8216;time_point&#8217;(指定的日期) &#8216;data_status&#8217; (KLDataStatus)。数据列格式如下</p>
+<div><p>ret == RET_OK 返回pd dataframe数据，固定表头包括’code’(代码) ‘time_point’(指定的日期) ‘data_status’ (KLDataStatus)。数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
 </div></blockquote>
 <table border="1" class="docutils">
@@ -2331,8 +2435,8 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 证券id，str，例如HK.00700</li>
-<li><strong>reference_type</strong> &#8211; 要获得的相关数据，参见 <a class="reference external" href="Base_API.html#securityreferencetype">SecurityReferenceType</a> 。例如WARRANT，表示获取正股相关的涡轮</li>
+<li><strong>code</strong> – 证券id，str，例如HK.00700</li>
+<li><strong>reference_type</strong> – 要获得的相关数据，参见 <a class="reference external" href="Base_API.html#securityreferencetype">SecurityReferenceType</a> 。例如WARRANT，表示获取正股相关的涡轮</li>
 </ul>
 </td>
 </tr>
@@ -2412,7 +2516,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code_list</strong> &#8211; 股票代码列表，仅支持正股、指数。list或str。例如：[&#8216;HK.00700&#8217;, &#8216;HK.00001&#8217;]或者&#8217;HK.00700,HK.00001&#8217;，最多可传入200只股票</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code_list</strong> – 股票代码列表，仅支持正股、指数。list或str。例如：[‘HK.00700’, ‘HK.00001’]或者’HK.00700,HK.00001’，最多可传入200只股票</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
@@ -2474,10 +2578,10 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码. 例如：&#8217;US.AAPL&#8217;</li>
-<li><strong>holder_type</strong> &#8211; 持有者类别，查看 <a class="reference external" href="Base_API.html#stockholder">StockHolder</a></li>
-<li><strong>start</strong> &#8211; 开始时间. 例如：&#8216;2016-10-01&#8217;</li>
-<li><strong>end</strong> &#8211; <p>结束时间，例如：&#8216;2017-10-01&#8217;。
+<li><strong>code</strong> – 股票代码. 例如：’US.AAPL’</li>
+<li><strong>holder_type</strong> – 持有者类别，查看 <a class="reference external" href="Base_API.html#stockholder">StockHolder</a></li>
+<li><strong>start</strong> – 开始时间. 例如：‘2016-10-01’</li>
+<li><strong>end</strong> – <p>结束时间，例如：‘2017-10-01’。
 start与end的组合如下：</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2572,6 +2676,41 @@ start与end的组合如下：</p>
 </dd></dl>
 
 </div>
+<div class="section" id="get-order-detail">
+<h4>get_order_detail<a class="headerlink" href="#get-order-detail" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="get_order_detail">
+<code class="descname">get_order_detail</code><span class="sig-paren">(</span><em>self</em>, <em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#get_order_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询A股Level 2权限下提供的委托明细</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> – 股票代码,例如：’HK.02318’</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret == RET_OK data为1个dict，包含以下数据</p>
+<p>ret != RET_OK data为错误字符串</p>
+<blockquote>
+<div>{‘code’: 股票代码
+‘Ask’:[ order_num, [order_volume1, order_volume2] ]
+‘Bid’: [ order_num, [order_volume1, order_volume2] ]
+}<p>’Ask’：卖盘， ‘Bid’买盘。order_num指委托订单数量，order_volume是每笔委托的委托量，当前最多返回前50笔委托的委托数量。即order_num有可能多于后面的order_volume</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futuquant</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_order_detail</span><span class="p">(</span><span class="s1">&#39;SZ.000001&#39;</span><span class="p">)</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 <div class="section" id="get-option-chain">
 <h4>get_option_chain<a class="headerlink" href="#get-option-chain" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
@@ -2583,9 +2722,9 @@ start与end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码,例如：&#8217;HK.02318&#8217;</li>
-<li><strong>start</strong> &#8211; 开始日期，该日期指到期日，例如&#8216;2017-08-01&#8217;</li>
-<li><strong>end</strong> &#8211; <p>结束日期（包括这一天），该日期指到期日，例如&#8216;2017-08-30&#8217;。 注意，时间范围最多30天。
+<li><strong>code</strong> – 股票代码,例如：’HK.02318’</li>
+<li><strong>start</strong> – 开始日期，该日期指到期日，例如‘2017-08-01’</li>
+<li><strong>end</strong> – <p>结束日期（包括这一天），该日期指到期日，例如‘2017-08-30’。 注意，时间范围最多30天。
 start和end的组合如下：</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -2621,8 +2760,8 @@ start和end的组合如下：</p>
 </table>
 </div></blockquote>
 </li>
-<li><strong>option_type</strong> &#8211; 期权类型,,默认全部,全部/看涨/看跌，查看 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></li>
-<li><strong>option_cond_type</strong> &#8211; 默认全部,全部/价内/价外，查看 <a class="reference external" href="Base_API.html#optioncondtype">OptionCondType</a></li>
+<li><strong>option_type</strong> – 期权类型,,默认全部,全部/看涨/看跌，查看 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></li>
+<li><strong>option_cond_type</strong> – 默认全部,全部/价内/价外，查看 <a class="reference external" href="Base_API.html#optioncondtype">OptionCondType</a></li>
 </ul>
 </td>
 </tr>
@@ -2734,7 +2873,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">ret_code, notify_type, sub_type, msg</td>
 </tr>
@@ -2809,7 +2948,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">参见 <a class="reference internal" href="#get_stock_quote">get_stock_quote</a> 的返回值</td>
 </tr>
@@ -2857,7 +2996,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">参见 <a class="reference internal" href="#get_order_book">get_order_book</a> 的返回值</td>
 </tr>
@@ -2905,7 +3044,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">参见 <a class="reference internal" href="#get_cur_kline">get_cur_kline</a> 的返回值，推送回调比 <a class="reference internal" href="#get_cur_kline">get_cur_kline</a> 少了市盈率和换手率字段</td>
 </tr>
@@ -2959,7 +3098,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">参见 <a class="reference internal" href="#get_rt_ticker">get_rt_ticker</a> 的返回值，回调比get_rt_ticker多返回一个字段：push_data_type，该字段指明数据来源，参见 <a class="reference external" href="Base_API.html#pushdatatype">PushDataType</a></td>
 </tr>
@@ -3007,7 +3146,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">参见 <a class="reference internal" href="#get_rt_data">get_rt_data</a> 的返回值</td>
 </tr>
@@ -3053,7 +3192,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">成功时返回(RET_OK, stock_code, [bid_frame_table, ask_frame_table]), 相关frame table含义见 <a class="reference internal" href="#get_broker_queue">get_broker_queue</a> 的返回值说明<p>失败时返回(RET_ERROR, ERR_MSG, None)</p>
 </td>
@@ -3064,10 +3203,57 @@ start和end的组合如下：</p>
 
 </div>
 </div>
+<hr class="docutils" />
+<div class="section" id="orderdetailhandlerbase-a">
+<h3>OrderDetailHandlerBase - A股委托明细推送回调处理类<a class="headerlink" href="#orderdetailhandlerbase-a" title="Permalink to this headline">¶</a></h3>
+<p>异步处理推送的A股委托明细数据。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>    <span class="k">class</span> <span class="nc">OrderDetailTest</span><span class="p">(</span><span class="n">OrderDetailHandlerBase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_recv_rsp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rsp_str</span><span class="p">):</span>
+        <span class="n">ret_code</span><span class="p">,</span> <span class="n">err_or_stock_code</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">OrderDetailTest</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">on_recv_rsp</span><span class="p">(</span><span class="n">rsp_str</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ret_code</span> <span class="o">!=</span> <span class="n">RET_OK</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;OrderDetailTest: error, msg: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err_or_stock_code</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">RET_ERROR</span><span class="p">,</span> <span class="n">data</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;OrderDetailTest: stock: {} data: {} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err_or_stock_code</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>  <span class="c1"># OrderDetailTest</span>
+
+        <span class="k">return</span> <span class="n">RET_OK</span><span class="p">,</span> <span class="n">data</span>
+
+
+<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">OrderDetailTest</span><span class="p">()</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">set_handler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">subscribe</span><span class="p">([</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">],</span> <span class="p">[</span><span class="n">SubType</span><span class="o">.</span><span class="n">ORDER_DETAIL</span><span class="p">])</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id9">
-<h2>接口入参限制<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h4>on_recv_rsp<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt>
+<code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
+<dd><p>在收到委托明细数据推送后会回调到该函数，使用者需要在派生类中覆盖此方法</p>
+<p>注意该回调是在独立子线程中</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> – 派生类中不需要直接处理该参数</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">成功时返回(RET_OK, data), 相关data含义见 <a class="reference internal" href="#get_order_detail">get_order_detail</a> 的返回值说明<p>失败时返回(RET_ERROR, ERR_MSG)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id10">
+<h2>接口入参限制<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -3081,7 +3267,7 @@ start和end的组合如下：</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>get_market_snapshot</td>
-<td>参考 <a class="reference external" href="Quote_API.html#id15">OpenAPI用户等级权限</a></td>
+<td>参考 <a class="reference external" href="Quote_API.html#id12">OpenAPI用户等级权限</a></td>
 </tr>
 <tr class="row-odd"><td>get_rt_ticker</td>
 <td>可获取逐笔最多最近1000个</td>
@@ -3100,10 +3286,10 @@ start和end的组合如下：</p>
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id11">
-<h2>接口限频<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
-<h3>低频数据接口<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h2>接口限频<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3>低频数据接口<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>低频数据接口是指不需要订阅就可以请求数据的接口， api的请求到达网关客户端后， 会转发请求到futu后台服务器，为控制流量，会对请求频率加以控制，
 目前的频率限制是以连续30秒内，限制请求次数，有限制的接口以及限制次数如下:</p>
 <blockquote>
@@ -3119,7 +3305,7 @@ start和end的组合如下：</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>get_market_snapshot</td>
-<td>参考 <a class="reference external" href="Quote_API.html#id15">OpenAPI用户等级权限</a></td>
+<td>参考 <a class="reference external" href="Quote_API.html#id12">OpenAPI用户等级权限</a></td>
 </tr>
 <tr class="row-odd"><td>get_plate_list</td>
 <td>10</td>
@@ -3144,13 +3330,13 @@ start和end的组合如下：</p>
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id14">
-<h3>高频数据接口<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>高频数据接口<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>为控制订阅产生推送数据流量，股票订阅总量有额度控制，规则如下:</p>
 <p>1.使用高频数据接口前，需要订阅（调用subscribe），订阅有额度限制：</p>
 <blockquote>
 <div>用户额度 &gt;= 订阅K线股票数 * K线权重 + 订阅逐笔股票数 * 逐笔权重 + 订阅报价股票数 * 报价权重 + 订阅摆盘股票数 * 摆盘权重</div></blockquote>
-<p>2.目前所有订阅类型占用额度均为1，用户总额度与用户等级相关，参考 <a class="reference external" href="Quote_API.html#id15">OpenAPI用户等级权限</a>。</p>
+<p>2.目前所有订阅类型占用额度均为1，用户总额度与用户等级相关，参考 <a class="reference external" href="Quote_API.html#id12">OpenAPI用户等级权限</a>。</p>
 <p>3.订阅至少一分钟才可以反订阅</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -3159,8 +3345,8 @@ start和end的组合如下：</p>
 </ul>
 </div>
 </div>
-<div class="section" id="id16">
-<h3>OpenAPI用户等级权限<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>OpenAPI用户等级权限<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>用户净资产大于10000港币为二级用户，小于10000港币为三级用户。一级用户需要与富途联系获取。</p>
 <table border="1" class="docutils">
@@ -3207,9 +3393,7 @@ start和end的组合如下：</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -3249,10 +3433,11 @@ start和end的组合如下：</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'3.4',
+            LANGUAGE:'en',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -3266,14 +3451,11 @@ start和end的组合如下：</p>
     <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-  
  
 <script type="text/javascript">
     console.log("Layout By FutuQuant");
