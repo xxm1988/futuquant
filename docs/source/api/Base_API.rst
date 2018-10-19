@@ -395,6 +395,10 @@ SubType - 实时数据定阅类型
   
  ..  py:attribute:: BROKER
  
+   委托摆盘明细
+  
+ ..  py:attribute:: ORDER_DETAIL
+ 
   买卖经纪
   
 
