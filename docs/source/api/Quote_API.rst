@@ -1549,6 +1549,51 @@ on_recv_rsp
 
 ----------------------------    
 
+OrderDetailHandlerBase - A股委托明细推送回调处理类
+-------------------------------------------
+
+异步处理推送的A股委托明细数据。
+
+.. code:: python
+    
+	class OrderDetailTest(OrderDetailHandlerBase):
+        def on_recv_rsp(self, rsp_str):
+            ret_code, err_or_stock_code, data = super(OrderDetailTest, self).on_recv_rsp(rsp_str)
+            if ret_code != RET_OK:
+                print("OrderDetailTest: error, msg: {}".format(err_or_stock_code))
+                return RET_ERROR, data
+
+            print("OrderDetailTest: stock: {} data: {} ".format(err_or_stock_code, data))  # OrderDetailTest
+
+            return RET_OK, data
+
+
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    handler = OrderDetailTest()
+    quote_ctx.set_handler(handler)
+    quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_DETAIL])
+    time.sleep(15)
+    quote_ctx.close()
+	
+-------------------------------------------
+
+on_recv_rsp
+~~~~~~~~~~~
+
+..  py:function:: on_recv_rsp(self, rsp_pb)
+
+
+ 在收到实时经纪数据推送后会回调到该函数，使用者需要在派生类中覆盖此方法
+
+ 注意该回调是在独立子线程中
+
+ :param rsp_pb: 派生类中不需要直接处理该参数
+ :return: 成功时返回(RET_OK, stock_code, [bid_frame_table, ask_frame_table]), 相关frame table含义见 get_broker_queue_ 的返回值说明
+
+          失败时返回(RET_ERROR, ERR_MSG, None)
+
+----------------------------    
+
 
 接口入参限制
 ============ 
