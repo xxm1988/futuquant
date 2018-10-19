@@ -1550,7 +1550,7 @@ on_recv_rsp
 ----------------------------    
 
 OrderDetailHandlerBase - A股委托明细推送回调处理类
--------------------------------------------
+--------------------------------------------------
 
 异步处理推送的A股委托明细数据。
 
@@ -1583,14 +1583,14 @@ on_recv_rsp
 ..  py:function:: on_recv_rsp(self, rsp_pb)
 
 
- 在收到实时经纪数据推送后会回调到该函数，使用者需要在派生类中覆盖此方法
+ 在收到委托明细数据推送后会回调到该函数，使用者需要在派生类中覆盖此方法
 
  注意该回调是在独立子线程中
 
  :param rsp_pb: 派生类中不需要直接处理该参数
- :return: 成功时返回(RET_OK, stock_code, [bid_frame_table, ask_frame_table]), 相关frame table含义见 get_broker_queue_ 的返回值说明
+ :return: 成功时返回(RET_OK, data), 相关data含义见 get_order_detail_ 的返回值说明
 
-          失败时返回(RET_ERROR, ERR_MSG, None)
+          失败时返回(RET_ERROR, ERR_MSG)
 
 ----------------------------    
 

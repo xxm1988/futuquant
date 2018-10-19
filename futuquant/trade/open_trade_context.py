@@ -89,12 +89,16 @@ class OpenTradeContextBase(OpenContextBase):
         """
 
         # 仅支持真实交易的市场可以解锁，模拟交易不需要解锁
-        ret = TRADE.check_mkt_envtype(self.__trd_mkt, TrdEnv.REAL)
-        if not ret:
-            return RET_ERROR, Err.NoNeedUnlock.text
+        md5_val = ''
+        if is_unlock:
+            ret = TRADE.check_mkt_envtype(self.__trd_mkt, TrdEnv.REAL)
+            if not ret:
+                return RET_OK, Err.NoNeedUnlock.text
 
-        if password is None and password_md5 is None:
-            return RET_ERROR, make_msg(Err.ParamErr, password=password, password_md5=password_md5)
+            if password is None and password_md5 is None:
+                return RET_ERROR, make_msg(Err.ParamErr, password=password, password_md5=password_md5)
+
+            md5_val = str(password_md5) if password_md5 else md5_transform(str(password))
 
         # 解锁要求先拉一次帐户列表, 目前仅真实环境需要解锁
         ret, msg, acc_id = self._check_acc_id(TrdEnv.REAL, 0)
@@ -104,10 +108,9 @@ class OpenTradeContextBase(OpenContextBase):
         query_processor = self._get_sync_query_processor(
                 UnlockTrade.pack_req, UnlockTrade.unpack_rsp)
 
-        md5_val = str(password_md5) if password_md5 else md5_transform(str(password))
         kargs = {
             'is_unlock': is_unlock,
-            'password_md5': str(md5_val),
+            'password_md5': md5_val,
             'conn_id': self.get_sync_conn_id()
         }
 
