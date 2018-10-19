@@ -108,7 +108,7 @@ set_handler
             ===============================    =========================
              类名                                 说明
             ===============================    =========================
-			SysNotifyHandlerBase				OpenD通知处理基类
+            SysNotifyHandlerBase				OpenD通知处理基类
             StockQuoteHandlerBase               报价处理基类
             OrderBookHandlerBase                摆盘处理基类
             CurKlineHandlerBase                 实时k线处理基类
@@ -180,7 +180,7 @@ get_stock_basicinfo
         suspension          bool           是否停牌(True表示停牌)
         listing_date        str            上市时间
         stock_id            int            股票id
-		delisting           bool           是否退市
+        delisting           bool           是否退市
         =================   ===========   ==============================================================================
 
  :Example:
@@ -190,7 +190,7 @@ get_stock_basicinfo
     from futuquant import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.WARRANT))
-    print(quote_ctx.get_stock_basicinfo(Market.US, SecurityType.DRVT, 'US.AAPL190621C140000'))
+    print(quote_ctx.get_stock_basicinfo(Market.US, SecurityType.STOCK, 'US.AAPL'))
     quote_ctx.close()
     
     
@@ -1142,6 +1142,38 @@ get_holding_change_list
     print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2016-10-01'))
     quote_ctx.close()
 
+get_order_detail
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_order_detail(self, code)
+
+ 查询A股Level 2权限下提供的委托明细
+
+ :param code: 股票代码,例如：'HK.02318'
+ :return: (ret, data)
+
+        ret == RET_OK data为1个dict，包含以下数据
+
+        ret != RET_OK data为错误字符串
+
+		{‘code’: 股票代码
+		‘Ask’:[ order_num, [order_volume1, order_volume2] ]
+		‘Bid’: [ order_num, [order_volume1, order_volume2] ]
+		}
+
+		'Ask'：卖盘， 'Bid'买盘。order_num指委托订单数量，order_volume是每笔委托的委托量，当前最多返回前50笔委托的委托数量。即order_num有可能多于后面的order_volume
+        
+
+ :Example:
+
+ .. code:: python
+
+    from futuquant import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_order_detail('SZ.000001')
+    quote_ctx.close()
+
+	
 get_option_chain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1194,7 +1226,6 @@ get_option_chain
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_option_chain('US.AAPL', '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
     quote_ctx.close()
-
 
 ---------------------------------------------------------------------    
 

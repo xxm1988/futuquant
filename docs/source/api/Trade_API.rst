@@ -93,7 +93,7 @@ unlock_trade - 解锁交易
  解锁交易。
 
  :param password: str，交易密码，如果password_md5不为空就使用传入的password_md5解锁，否则使用password转MD5得到password_md5再解锁
- :param password_md5: str，交易密码的MD5转16进制字符串(全小写)，解锁交易必须要填密码，锁定交易忽略
+ :param password_md5: str，交易密码的32位MD5加密16进制字符串(全小写)，解锁交易必须要填密码，锁定交易忽略
  :param is_unlock: bool，解锁或锁定，True解锁，False锁定
  :return(ret_code, ret_data): 	ret == RET_OK时, data为None，如果之前已经解锁过了，data为提示字符串，指示出已经解锁
  
@@ -462,13 +462,14 @@ acctradinginfo_query - 查询账户下最大可买卖数量
 
  查询账户下最大可买卖数量
  
- :param order_type: 订单类型，参见 _OrderType
+ :param order_type: 订单类型，参见 OrderType_
  :param code: 证券代码，例如'HK.00700'
  :param price: 报价，3位精度
  :param order_id: 订单号
  :param adjust_limit: 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整
- :param trd_env: 交易环境，参见 _TrdEnv
+ :param trd_env: 交易环境，参见 TrdEnv_
  :param acc_id: 业务账号，默认0表示第1个
+ :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
  :return (ret_code, ret_data):
         ret == RET_OK, data为pd.DataFrame，数据列如下
 

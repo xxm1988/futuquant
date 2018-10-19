@@ -1752,3 +1752,53 @@ class OptionChain:
                     data_list.append(quote_list)
 
         return RET_OK, "", data_list
+
+
+class OrderDetail:
+    """
+    Query Conversion for getting order detail information.
+    """
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def pack_req(cls, code, conn_id):
+
+        ret, content = split_stock_str(code)
+        if ret == RET_ERROR:
+            error_str = content
+            return RET_ERROR, error_str, None
+
+        market_code, stock_code = content
+
+        from futuquant.common.pb.Qot_GetOrderDetail_pb2 import Request
+        req = Request()
+        req.c2s.security.market = market_code
+        req.c2s.security.code = stock_code
+
+        return pack_pb_req(req, ProtoId.Qot_GetOrderDetail, conn_id)
+
+    @classmethod
+    def unpack_rsp(cls, rsp_pb):
+        if rsp_pb.retType != RET_OK:
+            return RET_ERROR, rsp_pb.retMsg, None
+
+        code = merge_qot_mkt_stock_str(int(rsp_pb.s2c.security.market), rsp_pb.s2c.security.code)
+        ask = [0, []]
+        bid = [0, []]
+
+        ask[0] = rsp_pb.s2c.orderDetailAsk.orderCount
+        for vol in rsp_pb.s2c.orderDetailAsk.orderVol:
+            ask[1].append(vol)
+
+        bid[0] = rsp_pb.s2c.orderDetailBid.orderCount
+        for vol in rsp_pb.s2c.orderDetailBid.orderVol:
+            bid[1].append(vol)
+
+        data = {
+            'code': code,
+            'Ask': ask,
+            'Bid': bid
+        }
+        return RET_OK, "", data
