@@ -1027,7 +1027,7 @@
 <h4>acctradinginfo_query - 查询账户下最大可买卖数量<a class="headerlink" href="#acctradinginfo-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="acctradinginfo_query">
-<code class="descname">acctradinginfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_type</em>, <em>code</em>, <em>price</em>, <em>order_id</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#acctradinginfo_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">acctradinginfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_type</em>, <em>code</em>, <em>price</em>, <em>order_id=None</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#acctradinginfo_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>查询账户下最大可买卖数量</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1037,7 +1037,7 @@
 <li><strong>order_type</strong> – 订单类型，参见 <a class="reference external" href="Base_API.html#ordertype">OrderType</a></li>
 <li><strong>code</strong> – 证券代码，例如’HK.00700’</li>
 <li><strong>price</strong> – 报价，3位精度</li>
-<li><strong>order_id</strong> – 订单号</li>
+<li><strong>order_id</strong> – 订单号。如果是新下单，则可以传None。如果是改单则要传单号。</li>
 <li><strong>adjust_limit</strong> – 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整</li>
 <li><strong>trd_env</strong> – 交易环境，参见 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a></li>
 <li><strong>acc_id</strong> – 业务账号，默认0表示第1个</li>
