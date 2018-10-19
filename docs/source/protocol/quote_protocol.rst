@@ -652,7 +652,7 @@
 .. note::
 
 	* 股票结构参考 `Security <base_define.html#security>`_
-	* 买卖盘结构参考 `OrderDetail <base_define.html#orderdetail>`_
+	* 委托明细结构参考 `OrderDetail <base_define.html#orderdetail>`_
 	
 -------------------------------------
 
@@ -686,7 +686,7 @@
 .. note::
 
 	* 股票结构参考 `Security <base_define.html#security>`_
-	* 买卖盘结构参考 `OrderDetail <base_define.html#orderdetail>`_
+	* 委托明细结构参考 `OrderDetail <base_define.html#orderdetail>`_
 	
 -------------------------------------
 
