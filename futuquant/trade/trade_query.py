@@ -538,7 +538,7 @@ class AccTradingInfoQuery:
         req.c2s.code = code
         req.c2s.price = price
         if order_id is not None:
-            req.c2s.orderID = order_id
+            req.c2s.orderID = int(order_id)
         if adjust_limit == 0:
             req.c2s.adjustPrice = False
         else:
