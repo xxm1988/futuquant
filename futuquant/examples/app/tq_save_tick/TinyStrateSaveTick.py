@@ -6,6 +6,7 @@
 import talib
 import sqlite3
 import platform
+import multiprocessing
 from sqlalchemy import create_engine
 from futuquant.examples.TinyQuant.TinyStrateBase import *
 
@@ -53,7 +54,44 @@ class SaveTickData():
         self.exe_sql(sql_cmd_create)
         self.sqlitedb_tick.commit()
 
-    def save_data_to_db(self,df):
+'askPrice1', 'askPrice2', 'askPrice3', 'askPrice4', 'askPrice5', 'askVolume1', 'askVolume2', 'askVolume3', 'askVolume4', 'askVolume5', 'bidPrice1', 'bidPrice2', 'bidPrice3', 'bidPrice4', 'bidPrice5', 'bidVolume1', 'bidVolume2', 'bidVolume3', 'bidVolume4', 'bidVolume5', 'date', 'datetime', 'highPrice', 'lastPrice', 'lowPrice', 'openPrice', 'preClosePrice', 'priceSpread', 'symbol', 'time', 'volume'
+
+    def create_order_table(self):
+        sql_cmd_create = """create TABLE IF NOT EXISTS  order_data_%s (
+                            [date_key] DATE DEFAULT CURRENT_DATE,
+                            [time] TIME DEFAULT CURRENT_TIME,
+                            [code] TEXT,
+                            [askPrice1] FLOAT,
+                            [askPrice2] FLOAT,
+                            [askPrice3] FLOAT,
+                            [askPrice4] FLOAT,
+                            [askPrice5] FLOAT,
+                            [askVolume1] FLOAT,
+                            [askVolume2] FLOAT,
+                            [askVolume3] FLOAT,
+                            [askVolume4] FLOAT,
+                            [askVolume5] FLOAT,
+                            [bidPrice1] FLOAT,
+                            [bidPrice2] FLOAT,
+                            [bidPrice3] FLOAT,
+                            [bidPrice4] FLOAT,
+                            [bidPrice5] FLOAT,
+                            [bidVolume1] FLOAT,
+                            [bidVolume2] FLOAT,
+                            [bidVolume3] FLOAT,
+                            [bidVolume4] FLOAT,
+                            [bidVolume5] FLOAT,
+                            [highPrice] FLOAT,
+                            [lowPrice] FLOAT,
+                            [lastPrice] FLOAT,
+                            [openPrice] FLOAT,
+                            [preClosePrice] FLOAT,
+                            [priceSpread] FLOAT,
+                            [volume] FLOAT ) """  % self.code_suffix
+        self.exe_sql(sql_cmd_create)
+        self.sqlitedb_tick.commit()
+
+    def save_data_tick(self,df):
         sql_cmd = """ replace into stock_list_new(time,code,price,volume,turnover,ticker_direction,sequence,type) values(?,?,?,?,?,?,?,?) """
         insertItemList = []
         for row in df.itertuples():
@@ -63,26 +101,65 @@ class SaveTickData():
         self.sqlitedb_tick.commit()
         return result
 
+    def save_data_order(self,data_list):
+        sql_cmd = """ insert into stock_list_new(date_key,time,code,askPrice1,askPrice2,askPrice3,askPrice4,askPrice5,askVolume1,askVolume2,askVolume3,askVolume4,askVolume5,bidPrice1,bidPrice2,bidPrice3,bidPrice4,bidPrice5,bidVolume1,bidVolume2,bidVolume3,bidVolume4,bidVolume5,highPrice,lowPrice,lastPrice,openPrice,preClosePrice,priceSpread,volume) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) """
+        insertItemList = []
+        for row in data_list:
+            insertItemList.append((row['date'],row['time'],row['code'],row['askPrice1'],row['askPrice2'],row['askPrice3'],row['askPrice4'],row['askPrice5'],row['askVolume1'],row['askVolume2'],row['askVolume3'],row['askVolume4'],row['askVolume5'],row['bidPrice1'],row['bidPrice2'],row['bidPrice3'],row['bidPrice4'],row['bidPrice5'],row['bidVolume1'],row['bidVolume2'],row['bidVolume3'],row['bidVolume4'],row['bidVolume5'],row['highPrice'],row['lowPrice'],row['lastPrice'],row['openPrice'],row['preClosePrice'],row['priceSpread'],row['volume']))
+
+        result = self.exe_sql_many(sql_cmd,insertItemList)
+        self.sqlitedb_tick.commit()
+        return result
+
+    def save_queue_data(self,symbol,data_queue):
+        last_time = time.time()
+        data_list = []
+        while True:
+            tiny_quote = data_queue.get()
+            data_list.append(tiny_quote)
+            now_time = time.time()
+            save_flag = False
+            if len(data_list) > 10:
+                self.save_data_order(data_list)
+                data_list = []
+                save_flag = True
+                print("[%s] save data length [%s]" % (symbol,len(data_list)))
+                print("[%s] data_queue size is %s " % (symbol,data_queue.qsize()))
+            if now_time - last_time > 5 and len(data_list) > 0:
+                self.save_data_order(data_list)
+                data_list = []
+                save_flag = True
+                print("[%s] timeout save data length [%s]" % (symbol,len(data_list)))
+            if not save_flag:
+                time.sleep(1)
+            last_time = now_time
+
 
 class TinyStrateSaveTick(TinyStrateBase):
     """策略名称, setting.json中作为该策略配置的key"""
     name = 'tiny_strate_sample'
 
     """策略需要用到行情数据的股票池"""
-    symbol_pools = ['HK.00700', 'HK.00001']
+    symbol_pools = ['HK.00700']
 
     def __init__(self):
-       super(TinyStrateSaveTick, self).__init__()
+        super(TinyStrateSaveTick, self).__init__()
 
-       """请在setting.json中配置参数"""
-       self.param1 = None
-       self.param2 = None
+        """请在setting.json中配置参数"""
+        self.param1 = None
+        self.param2 = None
+        self.data_queue_dict = {}
+        self.pool = multiprocessing.Pool(processes = 1 )
 
     def on_init_strate(self):
         """策略加载完配置后的回调
         1. 可修改symbol_pools 或策略内部其它变量的初始化
         2. 此时还不能调用futu api的接口
         """
+        for symbol in TinyStrateSaveTick.symbol_pools:
+            self.data_queue_dict[symbol.split('.')[1]] = multiprocessing.Manager().Queue()
+            stdObj = SaveTickData(symbol.split('.')[1])
+            self.pool.apply_async(stdObj.save_queue_data,(symbol,self.data_queue_dict[symbol.split('.')[1]]))
 
     def on_start(self):
         """策略启动完成后的回调
@@ -111,28 +188,10 @@ class TinyStrateSaveTick(TinyStrateBase):
     def on_quote_changed(self, tiny_quote):
         """报价、摆盘实时数据变化时，会触发该回调"""
         # TinyQuoteData
-        data = tiny_quote
-        symbol = data.symbol
-        str_dt = data.datetime.strftime("%Y%m%d %H:%M:%S")
+        symbol = tiny_quote.symbol
+        self.log("get data from {%s}" % symbol)
+        self.data_queue_dict[symbol.split('.')[1]].put(tiny_quote)
 
-        # 得到日k数据的ArrayManager(vnpy)对象
-        am = self.get_kl_day_am(data.symbol)
-        array_high = am.high
-        array_low = am.low
-        array_open = am.open
-        array_close = am.close
-        array_vol = am.volume
-
-        n = 5
-        ma_high = self.sma(array_high, n)
-        ma_low = self.sma(array_low, n)
-        ma_open = self.sma(array_open, n)
-        ma_close = self.sma(array_close, n)
-        ma_vol = self.sma(array_vol, n)
-
-        str_log = "on_quote_changed symbol=%s dt=%s sma(%s) open=%s high=%s close=%s low=%s vol=%s" % (
-                    symbol, str_dt, n, ma_open, ma_high, ma_close, ma_low, ma_vol)
-        self.log(str_log)
 
     def on_bar_min1(self, tiny_bar):
         """每一分钟触发一次回调"""
