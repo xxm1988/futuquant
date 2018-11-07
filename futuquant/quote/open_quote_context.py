@@ -1740,7 +1740,7 @@ class OpenQuoteContext(OpenContextBase):
                 ==========    ==========    ========================================
         :param option_type: 期权类型,默认全部，全部/看涨/看跌，futuquant.common.constant.OptionType
         :param option_cond_type: 默认全部，全部/价内/价外，futuquant.common.constant.OptionCondType
-        :return: (ret, data)
+        :return: (ret, data)re
 
                 ret == RET_OK 返回pd dataframe数据，数据列格式如下
 
