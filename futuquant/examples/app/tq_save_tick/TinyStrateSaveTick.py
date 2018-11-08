@@ -140,7 +140,7 @@ class TinyStrateSaveTick(TinyStrateBase):
     name = 'tiny_strate_sample'
 
     """策略需要用到行情数据的股票池"""
-    symbol_pools = ['HK.00700']
+    symbol_pools = ['HK.00700','HK.80000','HK.59972','HK.59828','HK.66115','HK.66490']
 
     def __init__(self):
         super(TinyStrateSaveTick, self).__init__()
