@@ -115,6 +115,7 @@ class SaveTickData():
         last_time = time.time()
         data_list = []
         while True:
+            print("[%s] data_queue size is %s " % (symbol,data_queue.qsize()))
             tiny_quote = data_queue.get()
             data_list.append(tiny_quote)
             now_time = time.time()
@@ -124,15 +125,15 @@ class SaveTickData():
                 data_list = []
                 save_flag = True
                 print("[%s] save data length [%s]" % (symbol,len(data_list)))
-                print("[%s] data_queue size is %s " % (symbol,data_queue.qsize()))
-            if now_time - last_time > 5 and len(data_list) > 0:
+            elif now_time - last_time > 5 and len(data_list) > 0:
                 self.save_data_order(data_list)
                 data_list = []
                 save_flag = True
+                last_time = now_time
                 print("[%s] timeout save data length [%s]" % (symbol,len(data_list)))
             if not save_flag:
                 time.sleep(1)
-            last_time = now_time
+
 
 
 class TinyStrateSaveTick(TinyStrateBase):
